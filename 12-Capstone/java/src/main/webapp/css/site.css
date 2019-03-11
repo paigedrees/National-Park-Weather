@@ -1,0 +1,17 @@
+/* Layout Formatting */
+
+body {
+	padding: 25px;
+}
+
+#allParks {
+	display: flex;
+	flex-direction: column;
+}
+
+#park {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
