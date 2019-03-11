@@ -20,13 +20,13 @@ public class ParkController {
 	@RequestMapping("/home") 
 	public String getHome(ModelMap modelMap){
 		TemperatureChoice tempKey = new TemperatureChoice();
-		tempKey.setScale("C");
+		tempKey.setScale("F");
 		modelMap.put("parks", parkDao.getAllParks());
 		modelMap.put("temperatureChoice", tempKey);
 		return "homePage";
 	}
 	
-	@RequestMapping("/detailPage")
+	@RequestMapping("/detail")
 	public String showParkDetail(HttpServletRequest request, ModelMap modelMap) {
 		String parkCode = request.getParameter("parkCode");
 		Park newPark = parkDao.getParkByCode(parkCode);

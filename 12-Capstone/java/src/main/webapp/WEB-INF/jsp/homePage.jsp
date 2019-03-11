@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:import url="/WEB-INF/jsp/header.jsp" />
+<c:import url="header.jsp">
+	<c:param name="temperatureChoice" value="${temperatureChoice}"/>
+</c:import>
 
 	<div id="allParks">
 	
@@ -10,7 +12,7 @@
 		
 			<div id="parkImage">
 			
-				<a href="detailPage?parkCode=${park.code}"><img class="image" src="${imgPark}" /></a>
+				<a href="detail?parkCode=${park.code}"><img class="image" src="${imgPark}" /></a>
 			
 			</div>
 		

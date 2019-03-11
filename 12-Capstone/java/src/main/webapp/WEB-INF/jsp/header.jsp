@@ -26,21 +26,19 @@
 	       		<select id="scale" name="scale">
 	       			
 	       			<option value="F"
-	       			<c:if test="${tempartureChoice.scale == 'F'}">
+	       			<c:if test="${temperatureChoice.scale == 'F'}">
 	       			selected
 	       			</c:if>
 	       			>Fahrenheit</option>
 	       			
 	       			<option value="C"
-	       			<c:if test="${tempartureChoice.scale == 'C'}">
+	       			<c:if test="${temperatureChoice.scale == 'C'}">
 	       			selected
 	       			</c:if>
 	       			>Celcius</option>
-	       			
 	       		</select>
 	       	</form:form>
 	        </li>
-	        <li> <span style="color: white;">${temperatureChoice.scale}</span></li>
 	    </ul>
     </nav>
    
