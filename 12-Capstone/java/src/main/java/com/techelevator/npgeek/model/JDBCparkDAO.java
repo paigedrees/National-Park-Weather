@@ -54,8 +54,9 @@ public class JDBCparkDAO implements ParkDAO {
 		return thisPark;
 	}
 	
+	@Override
 	public Park getParkByCode(String code) {
-		String sql = "SELECT * FROM park WHERE code = ?";
+		String sql = "SELECT * FROM park WHERE parkcode = ?";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, code.toUpperCase());
 		Park thisPark = null;
 		if (result.next()) {
@@ -64,6 +65,7 @@ public class JDBCparkDAO implements ParkDAO {
 		return thisPark;
 	}
 	
+	@Override
 	public List<Weather> getForecastByCode(String code) {
 		List<Weather> allWeathers = new ArrayList<Weather>();
 		String sql = "SELECT * FROM weather WHERE parkcode = ? ORDER by fivedayforecastvalue";

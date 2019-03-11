@@ -6,4 +6,8 @@ public interface ParkDAO {
 
 	public List<Park> getAllParks();
 	
+	public Park getParkByCode(String code);
+	
+	public List<Weather> getForecastByCode(String code);
+	
 }
