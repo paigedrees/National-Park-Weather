@@ -46,7 +46,7 @@
 	
 	<div id="hikingInfo">
 		<ul>
-			<li>Acreage: ${park.acreage}<li>
+			<li>Acreage: ${park.acreage}</li>
 			<li>Elevation: ${park.elevationInFeet} ft.</li>
 			<li>Miles of Trail: ${park.milesOfTrail}</li>
 		</ul>
@@ -61,13 +61,15 @@
 	</div>
 	
 	<div id="weather">
-		<c:forEach var="weather" items="${}">
+		<c:forEach var="weather" items="${weatherForecast}">
+		<c:url var="imgWeather" value="/img/weather/${weather.forecast}.png"/>
 			<div>
-				<p id="fiveDayForecastValue"></p>
-				<img src=${ } />
-				<p>Low: </p>
-				<p>High: </p>
-				<p id="forecast"></p>
+				<p>${weather.dayName}</p>
+				<img src="${imgWeather}" />
+				<p>Low: ${weather.low}</p>
+				<p>High: ${weather.high}</p>
+				<p id="forecast">${weather.forecast}</p>
+<%-- 				<p id="recommendation">${weather.getRecommendation()}</p> --%>
 			</div>
 		
 		</c:forEach>
