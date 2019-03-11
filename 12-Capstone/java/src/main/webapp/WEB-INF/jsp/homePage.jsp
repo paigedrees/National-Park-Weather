@@ -4,20 +4,20 @@
 
 	<div id="allParks">
 	
-		<c:forEach var="" items="${ }">
-		
+		<c:forEach var="park" items="${parks}">
+		<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg"/>
 		<div id="park">
 		
 			<div id="parkImage">
 			
-				<a href=""><img class="image" src="img/${}" /></a>
+				<a href=""><img class="image" src="${imgPark}" /></a>
 			
 			</div>
 		
 			<div id="parkInfo">
 			
-				<h3>Name</h3>
-				<p>Description</p>
+				<h3>${park.name}</h3>
+				<p>${park.description}</p>
 			
 			</div>
 		
