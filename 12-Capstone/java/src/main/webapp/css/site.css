@@ -1,3 +1,13 @@
+/* Nav */
+
+nav ul li {
+	list-style: none;
+	margin-right: 20px;
+	display: inline;
+	font-size: 18px;
+	
+}
+
 /* Layout Formatting */
 
 body {
@@ -13,5 +23,58 @@ body {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
+}
+
+/* detailPage Grid Info */
+
+#detailGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"image image image"
+		"name name ."
+		"quote quote source"
+		"description description description"
+		"info1 info2 info3"
+		"weather weather weather"
+}
+
+#detailImage {
+	grid-area: image;
+}
+
+#detailName {
+	grid-area: name;
+}
+
+#detailQuote {
+	grid-area: quote;
+}
+
+#quoteSource {
+	grid-area: source;
+}
+
+#detailDescription {
+	grid-area: description;
+}
+
+#history {
+	grid-area: info1;
+}
+
+#hikingInfo {
+	grid-area: info2;
+}
+
+#environment {
+	grid-area: info3;
+}
+
+#weather {
+	grid-area: weather;
+	display: flex;
+	flex-direction: row;
 }
 
