@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +17,31 @@
     </header>
     <nav class="navbar navbar-dark bg-dark">
         <ul>
-	        <li><a href="<c:url value="/"/>">Home</a></li>
+	        <li><a href="<c:url value="/home"/>">Home</a></li>
 	        <li><a href="<c:url value=""/>">Survey</a></li>
+	       	<li>'
+	       	<form:form  modelAttribute="temperatureChoice">
+	       	<label class="text" for="scale">Temperature Scale</label>
+	       		
+	       		<select id="scale" name="scale">
+	       			
+	       			<option value="F"
+	       			<c:if test="${tempartureChoice.scale == 'F'}">
+	       			selected
+	       			</c:if>
+	       			>Fahrenheit</option>
+	       			
+	       			<option value="C"
+	       			<c:if test="${tempartureChoice.scale == 'C'}">
+	       			selected
+	       			</c:if>
+	       			>Celcius</option>
+	       			
+	       		</select>
+	       	</form:form>
+	        </li>
+	        <li> <span style="color: white;">${temperatureChoice.scale}</span></li>
 	    </ul>
     </nav>
+   
+   

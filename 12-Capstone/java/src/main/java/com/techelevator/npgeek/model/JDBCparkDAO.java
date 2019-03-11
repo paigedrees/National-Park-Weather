@@ -81,8 +81,8 @@ public class JDBCparkDAO implements ParkDAO {
 		Weather thisWeather = new Weather();
 		thisWeather.setCode(row.getString("parkcode"));
 		thisWeather.setDay(row.getInt("fivedayforecastvalue"));
-		thisWeather.setLow(row.getInt("low"));
-		thisWeather.setHigh(row.getInt("high"));
+		thisWeather.setLowTempF(row.getInt("low"));
+		thisWeather.setHighTempF(row.getInt("high"));
 		thisWeather.setForecast(row.getString("forecast"));
 		
 		return thisWeather;
