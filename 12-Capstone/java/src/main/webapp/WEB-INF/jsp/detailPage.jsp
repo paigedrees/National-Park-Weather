@@ -4,63 +4,64 @@
 
 <div id="detailGrid">
 
+	<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg"/>
 	<div id="detailImage">
 	
-		<img src="${}" />
+		<img src="${imgPark}" />
 	
 	</div>
 	
 	<div id="detailName">
 		
-		<h3>${ }</h3>
+		<h3>${park.name}</h3>
 		
 	</div>
 	
 	<div id="detailQuote">
 	
-		<h4>${ }</h4>
+		<h4>${park.inspirationalQuote}</h4>
 	
 	</div>
 
 	<div id="quoteSource">
 		
-		<h4>${ }</h4>
+		<h4>${park.quoteSource}</h4>
 		
 	</div>
 	
 	<div id="detailDescription">
 	
-		<p>${ }</p>
+		<p>${park.description}</p>
 		
 	</div>
 	
 	<div id="history">
 		<ul>
-			<li>State: ${ }</li>
-			<li>Year Founded: ${ }</li>
-			<li>Annual Visitor Count: ${ }</li>
-			<li class="price">Fee: ${ }</li>
+			<li>State: ${park.state}</li>
+			<li>Year Founded: ${park.yearFounded}</li>
+			<li>Annual Visitor Count: ${park.annualVisitorCount}</li>
+			<li class="price">Fee: ${park.entryFee}</li>
 		</ul>
 	</div>
 	
 	<div id="hikingInfo">
 		<ul>
-			<li>Acreage: ${ }<li>
-			<li>Elevation in Feet: ${ }</li>
-			<li>Miles of Trail: ${ }</li>
+			<li>Acreage: ${park.acreage}<li>
+			<li>Elevation: ${park.elevationInFeet} ft.</li>
+			<li>Miles of Trail: ${park.milesOfTrail}</li>
 		</ul>
 	</div>
 	
 	<div id="environment">
 		<ul>
-			<li>Climate: ${ }</li>
-			<li>Number of Campsites: ${ }</li>
-			<li>Number of Animal Species: ${ }</li>
+			<li>Climate: ${park.climate}</li>
+			<li>Number of Campsites: ${park.numberOfCampsites}</li>
+			<li>Number of Animal Species: ${park.numberOfAnimalSpecies}</li>
 		</ul>
 	</div>
 	
 	<div id="weather">
-		<c:forEach var="" items="${ }">
+		<c:forEach var="weather" items="${}">
 			<div>
 				<p id="fiveDayForecastValue"></p>
 				<img src=${ } />

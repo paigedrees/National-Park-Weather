@@ -10,7 +10,7 @@
 		
 			<div id="parkImage">
 			
-				<a href=""><img class="image" src="${imgPark}" /></a>
+				<a href="detailPage?parkCode=${park.code}"><img class="image" src="${imgPark}" /></a>
 			
 			</div>
 		
