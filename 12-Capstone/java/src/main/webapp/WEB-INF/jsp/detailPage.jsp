@@ -62,14 +62,14 @@
 	
 	<div id="weather">
 		<c:forEach var="weather" items="${weatherForecast}">
-		<c:url var="imgWeather" value="/img/weather/${weather.forecast}.png"/>
+		<c:url var="imgWeather" value="/img/weather/${weather.forecastText}.png"/>
 			<div>
 				<p>${weather.dayName}</p>
 				<img src="${imgWeather}" />
-				<p>Low: ${weather.low}</p>
-				<p>High: ${weather.high}</p>
+				<p>Low: ${weather.getLowTempAs('F')}</p>
+				<p>High: ${weather.getHighTempAs('F')}</p>
 				<p id="forecast">${weather.forecast}</p>
-<%-- 				<p id="recommendation">${weather.getRecommendation()}</p> --%>
+				<p id="recommendation">${weather.getRecommendation()}</p> 
 			</div>
 		
 		</c:forEach>

@@ -11,8 +11,8 @@ public class Weather {
 
 	private String code;
 	private int day;
-	private int low;
-	private int high;
+	private int lowTempF;
+	private int highTempF;
 	private String forecast;
 	//private static final DateFormatSymbols dayNames= new DateFormatSymbols();
 	
@@ -33,8 +33,8 @@ public class Weather {
 			break;
 			
 		case "thunderstorms":
-			warnings.add("Seek shelter.");
-			warnings.add("Avoid hiking on exposed ridges.");
+			warnings.add("Seek shelter");
+			warnings.add("Avoid hiking on exposed ridges");
 			//Fall through
 			
 		case "rain":
@@ -48,34 +48,69 @@ public class Weather {
 		}	
 		
 		
-		if (high > 75) {
+		if (highTempF > 75) {
 			toPack.add("Extra gallon of Water");
 		}
-		if ( (high - low) > 20) {
+		if ( (highTempF - lowTempF) > 20) {
 			toWear.add("breathable layers");
 		}
-		if ( low < 20) {
-			warnings.add("Danger of exposure to frigid temperatures.");
+		if ( lowTempF < 20) {
+			warnings.add("Danger of exposure to frigid temperatures");
 		}
 		
 		StringBuffer result = new StringBuffer();
 		if (toPack.size() > 0) {
 			result.append("We recommend that you pack ");
-			result.append( toPack.stream().collect(Collectors.joining(", ", null, ".\n")) );
+			result.append( toPack.stream().collect(Collectors.joining(", ", "", ".\n")) );
 		}
 		if (toWear.size() > 0) {
 			result.append("We recommend that you wear ");
-			result.append( toWear.stream().collect(Collectors.joining(", ", null, ".\n")) );
+			result.append( toWear.stream().collect(Collectors.joining(", ", "", ".\n")) );
 		}
 		if (warnings.size() > 0) {
 			result.append("The following warnings are in effect: ");
-			result.append( warnings.stream().collect(Collectors.joining("; ", null, ".\n")) );
+			result.append( warnings.stream().collect(Collectors.joining("; ", "", ".\n")) );
 		}
 		
-		
+		System.out.println(result.toString());
 		return result.toString();
 	}
 	
+	public String getForecastText() {
+		
+		String[] words = forecast.split("\\s");
+		String result = words[0].toLowerCase();
+		for (int n = 1; n < words.length; n++) {
+			result += Character.toUpperCase(words[n].charAt(0)) + words[n].substring(1).toLowerCase();
+		}
+		
+		return result;
+		
+	
+	}
+	
+	public float getLowTempAs(char scale) {
+		switch( Character.toUpperCase(scale)) {
+		case 'F':
+			return lowTempF;
+			
+		case 'C':
+			return (float)(lowTempF - 32) * 5/9;
+		}
+		return 0;
+	}
+	
+	public float getHighTempAs(char scale) {
+		switch( Character.toUpperCase(scale)) {
+		case 'F':
+			return highTempF;
+			
+		case 'C':
+			return (float)(highTempF - 32) * 5/9;
+		}
+		return 0;
+	}
+
 	public String getCode() {
 		return code;
 	}
@@ -86,17 +121,11 @@ public class Weather {
 	public void setDay(int day) {
 		this.day = day;
 	}
-	public int getLow() {
-		return low;
+	public void setLowTempF(int low) {
+		this.lowTempF = low;
 	}
-	public void setLow(int low) {
-		this.low = low;
-	}
-	public int getHigh() {
-		return high;
-	}
-	public void setHigh(int high) {
-		this.high = high;
+	public void setHighTempF(int high) {
+		this.highTempF = high;
 	}
 	public String getForecast() {
 		return forecast;
