@@ -1,5 +1,9 @@
 package com.techelevator.npgeek.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -17,6 +21,7 @@ import com.techelevator.npgeek.model.Park;
 import com.techelevator.npgeek.model.ParkDAO;
 import com.techelevator.npgeek.model.Survey;
 import com.techelevator.npgeek.model.SurveyDAO;
+import com.techelevator.npgeek.model.SurveyResult;
 import com.techelevator.npgeek.model.TemperatureChoice;
 
 
@@ -81,7 +86,18 @@ public class ParkController {
 	
 	@RequestMapping(path="/surveyResults", method=RequestMethod.GET)
 	public String getSurveyResults(ModelMap modelMap){
-		modelMap.put("topPark", parkDao.getParkByCode(surveyDao.getMostPopularParkCode()));
+		
+		List<SurveyResult> parksInSurvey = new ArrayList<SurveyResult>();
+		List<String> keys = new ArrayList<>(surveyDao.getMostPopularParkCodes().keySet());
+		
+		for (String code : keys) {
+			SurveyResult result = new SurveyResult();
+			result.setPark(parkDao.getParkByCode(code));
+			result.setSurveyCount(surveyDao.getMostPopularParkCodes().get(code));
+			parksInSurvey.add(result);
+		}
+		
+		modelMap.put("surveys", parksInSurvey);
 		
 		return "surveyResults";
 	}

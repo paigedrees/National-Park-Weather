@@ -1,5 +1,11 @@
 package com.techelevator.npgeek.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +25,14 @@ public class JDBCsurveyDAO implements SurveyDAO{
 	
 	@Override
 	public void save(Survey survey) {
-		Long id = getNextId();
-		String sqlInsertSurvey = "INSERT INTO survey_result(surveyid, parkcode, emailaddress, state, activitylevel) VALUES (?,?,?,?,?)";
-		jdbcTemplate.update(sqlInsertSurvey, id, survey.getFavoriteParkCode(), survey.getEmail(), survey.getStateOfResidence(), survey.getPhysicalActivityLevel());
-		survey.setSurveyId(id);
+		
+		String sqlInsertSurvey = "INSERT INTO survey_result(parkcode, emailaddress, state, activitylevel) VALUES (?,?,?,?)";
+		jdbcTemplate.update(sqlInsertSurvey, survey.getFavoriteParkCode(), survey.getEmail(), survey.getStateOfResidence(), survey.getPhysicalActivityLevel());
+		
 		
 	}
 	
-	
+	/*
 	private Long getNextId() {
 		String sqlSelectNextId = "SELECT NEXTVAL('seq_surveyid') FROM survey_result";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectNextId);
@@ -38,21 +44,25 @@ public class JDBCsurveyDAO implements SurveyDAO{
 		}
 		return id;
 	}
+	*/
 	
 	@Override
-	public String getMostPopularParkCode() {
+	public Map<String, Integer> getMostPopularParkCodes() {
+		Map<String, Integer> parkCodes = new LinkedHashMap<String, Integer>();
 		String sqlGetParkCode = "SELECT parkcode, count(*) FROM survey_result \n" + 
 				"        GROUP BY parkcode\n" + 
-				"        ORDER BY count(*) DESC LIMIT 1;";
+				"        ORDER BY count(*) DESC, parkcode;";
 		
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetParkCode);
-		String parkCode = "";
-		if (result.next()) {
-			parkCode = result.getString("parkcode");
+		
+		while (result.next()) {
+			String parkCode = result.getString("parkcode");
+			Integer surveyCount = result.getInt("count");
+			parkCodes.put(parkCode, surveyCount);
 		}
 
 		
-		return parkCode;
+		return parkCodes;
 	}
 	
 	

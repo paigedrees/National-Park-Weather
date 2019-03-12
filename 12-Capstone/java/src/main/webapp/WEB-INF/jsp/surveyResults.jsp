@@ -4,8 +4,12 @@
 	<c:param name="temperatureChoice" value="${temperatureChoice}"/>
 </c:import>
 
-	<div id="surveyResults">
+	<div id="surveys">
 	
-	<p> The most popular park is ${topPark.name}</p>
+	<c:forEach var="surveyResult" items="${surveys}">
+		<p> The park name is ${surveyResult.park.name}</p>
+		<p> The amount of votes is ${surveyResult.surveyCount}</p>
+	</c:forEach>
+	
 	</div>
 	
