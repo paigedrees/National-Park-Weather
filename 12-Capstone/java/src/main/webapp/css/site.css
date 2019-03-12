@@ -26,8 +26,16 @@ html {
 	
 }
 
-body {
+.container {
+	background-color: transparent;
+}
+
+.parkDetail {
 	background-color: rgba(250, 250, 250, .75);
+}
+
+.form-group {
+	margin-top: 20px;
 }
 
 #allParks {

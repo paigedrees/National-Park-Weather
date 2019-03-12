@@ -8,7 +8,7 @@
 	
 		<c:forEach var="park" items="${parks}">
 		<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg"/>
-		<div class="row form-group">
+		<div class="row parkDetail">
 		
 			<div class="col-md-6">
 			
