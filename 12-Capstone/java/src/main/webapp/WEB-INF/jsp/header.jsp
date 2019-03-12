@@ -18,7 +18,7 @@
     <nav class="navbar navbar-dark bg-dark">
         <ul>
 	        <li><a href="<c:url value="/home"/>">Home</a></li>
-	        <li><a href="<c:url value=""/>">Survey</a></li>
+	        <li><a href="<c:url value="survey"/>">Survey</a></li>
 	       	<li>'
 	       	<form:form  modelAttribute="temperatureChoice">
 	       	<label class="text" for="scale">Temperature Scale</label>
