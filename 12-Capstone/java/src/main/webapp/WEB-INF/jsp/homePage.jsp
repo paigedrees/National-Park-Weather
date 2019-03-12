@@ -4,19 +4,19 @@
 	<c:param name="temperatureChoice" value="${temperatureChoice}"/>
 </c:import>
 
-	<div id="allParks">
+	<div class="container">
 	
 		<c:forEach var="park" items="${parks}">
 		<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg"/>
-		<div id="park">
+		<div class="row form-group">
 		
-			<div id="parkImage">
+			<div class="col-md-6">
 			
-				<a href="detail?parkCode=${park.code}"><img class="image" src="${imgPark}" /></a>
+				<a href="detail?parkCode=${park.code}"><img class="img-fluid" src="${imgPark}" /></a>
 			
 			</div>
 		
-			<div id="parkInfo">
+			<div class="col-md-6">
 			
 				<h3>${park.name}</h3>
 				<p>${park.description}</p>
@@ -29,5 +29,7 @@
 		</c:forEach>
 	
 	</div>
+	
+<c:import url="footer.jsp" />
 	
 	

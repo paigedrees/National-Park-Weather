@@ -2,79 +2,97 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
-<div id="detailGrid">
+<div class="container">
 
-	<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg"/>
-	<div id="detailImage">
-	
-		<img src="${imgPark}" />
-	
-	</div>
-	
-	<div id="detailName">
-		
-		<h3>${park.name}</h3>
-		
-	</div>
-	
-	<div id="detailQuote">
-	
-		<h4>${park.inspirationalQuote}</h4>
-	
+	<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg" />
+
+	<div class="row justify-content-center form-group">
+
+		<div class="col-md">
+
+			<img class="img-fluid" src="${imgPark}" />
+
+		</div>
+
 	</div>
 
-	<div id="quoteSource">
-		
-		<h4>${park.quoteSource}</h4>
-		
+	<div class="row justify-content-center form-group">
+
+		<div class="col-md">
+
+			<h3>${park.name}</h3>
+
+		</div>
+
 	</div>
-	
-	<div id="detailDescription">
-	
-		<p>${park.description}</p>
-		
+
+	<div class="row form-group">
+
+		<div class="col-md-6">
+
+			<h4>${park.inspirationalQuote}</h4>
+
+		</div>
+
+		<div class="col-md-6">
+
+			<h4>${park.quoteSource}</h4>
+
+		</div>
+
 	</div>
-	
-	<div id="history">
-		<ul>
-			<li>State: ${park.state}</li>
-			<li>Year Founded: ${park.yearFounded}</li>
-			<li>Annual Visitor Count: ${park.annualVisitorCount}</li>
-			<li class="price">Fee: ${park.entryFee}</li>
-		</ul>
+
+	<div class="row form-group">
+
+		<div class="col-md">
+
+			<p>${park.description}</p>
+
+		</div>
+
 	</div>
-	
-	<div id="hikingInfo">
-		<ul>
-			<li>Acreage: ${park.acreage}</li>
-			<li>Elevation: ${park.elevationInFeet} ft.</li>
-			<li>Miles of Trail: ${park.milesOfTrail}</li>
-		</ul>
+
+	<div class="row form-group">
+
+		<div class="col-md-4 col-sm">
+			<p>State: ${park.state}</p>
+			<p>Year Founded: ${park.yearFounded}</p>
+			<p>Annual Visitor Count: ${park.annualVisitorCount}</p>
+			<p class="price">Fee: $${park.entryFee}</p>
+		</div>
+
+		<div class="col-md-4 col-sm">
+			<p>Acreage: ${park.acreage}</p>
+			<p>Elevation: ${park.elevationInFeet} ft.</p>
+			<p>Miles of Trail: ${park.milesOfTrail} miles</p>
+		</div>
+
+		<div class="col-md-4 col-sm">
+			<p>Climate: ${park.climate}</p>
+			<p>Number of Campsites: ${park.numberOfCampsites}</p>
+			<p>Number of Animal Species: ${park.numberOfAnimalSpecies}</p>
+		</div>
+
 	</div>
-	
-	<div id="environment">
-		<ul>
-			<li>Climate: ${park.climate}</li>
-			<li>Number of Campsites: ${park.numberOfCampsites}</li>
-			<li>Number of Animal Species: ${park.numberOfAnimalSpecies}</li>
-		</ul>
-	</div>
-	
-	<div id="weather">
+
+	<div class="row form-group">
 		<c:forEach var="weather" items="${weatherForecast}">
-		<c:url var="imgWeather" value="/img/weather/${weather.forecastText}.png"/>
-			<div>
+			<c:url var="imgWeather"
+				value="/img/weather/${weather.forecastText}.png" />
+			<div class="col-md">
 				<p>${weather.dayName}</p>
-				<img src="${imgWeather}" />
+				<img class="img-fluid" src="${imgWeather}" />
 				<p>Low: ${weather.getLowTempAs('F')}</p>
 				<p>High: ${weather.getHighTempAs('F')}</p>
 				<p id="forecast">${weather.forecast}</p>
-				<p id="recommendation">${weather.getRecommendation()}</p> 
+				<p id="recommendation">${weather.getRecommendation()}</p>
 			</div>
-		
+
 		</c:forEach>
 	</div>
 
 
 
 </div>
+
+<c:import url="footer.jsp" />

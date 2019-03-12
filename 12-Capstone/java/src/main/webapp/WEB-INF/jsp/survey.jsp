@@ -2,32 +2,45 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <c:import url="header.jsp">
-	<c:param name="temperatureChoice" value="${temperatureChoice}"/>
+	<c:param name="temperatureChoice" value="${temperatureChoice}" />
 </c:import>
 
-	<div id="surveyInfo">
-		
-		<c:url var="surveyUrl" value ="/survey"/>
-		<form:form id="survey" action="${surveyUrl}" method="POST" modelAttribute="survey">
-		
-		<div>
-			<label for="favoriteParkCode"><strong>Favorite Park</strong></label>
-			<select id="favoriteParkCode" name="favoriteParkCode" >
-				<c:forEach var="park" items="${parks}">
-	       			<option value="${park.code}">${park.name}</option>
-	       			
-				</c:forEach>
-			</select>
+<div id="surveyInfo" class="container">
+
+	<c:url var="surveyUrl" value="/survey" />
+	<form:form id="survey" action="${surveyUrl}" method="POST"
+		modelAttribute="survey">
+
+		<div class="row">
+			<div class="col-md-3">
+				<label for="favoriteParkCode"><strong>Favorite Park</strong></label>
+			</div>
+			<div class="col-md-3">
+				<select id="favoriteParkCode" name="favoriteParkCode">
+					<c:forEach var="park" items="${parks}">
+						<option value="${park.code}">${park.name}</option>
+
+					</c:forEach>
+				</select>
+			</div>
 		</div>
-		
-		<div>
+
+		<div class="row">
+			<div class="col-md-3">
 			<label for="email"><strong>Email</strong></label>
-			<form:input path="email" placeholder="enter email"/>
-			<form:errors path="email" class="error"/>
+			</div>
+			<div class="col-md-3">
+			<form:input path="email" placeholder="enter email" />
+			<form:errors path="email" class="error" />
+			</div>
 		</div>
-		
-		<div>
-			<label for="stateOfResidence"><strong>State of Residency</strong></label>
+
+		<div class="row">
+		<div class="col-md-3">
+			<label for="stateOfResidence"><strong>State of
+					Residency</strong></label> 
+			</div>
+			<div class="col-md-3">
 			<select id="stateOfResidence" name="stateOfResidence">
 				<option value="AL">Alabama</option>
 				<option value="AK">Alaska</option>
@@ -82,20 +95,29 @@
 				<option value="WY">Wyoming</option>
 				<option value="NOTINUS">Outside the U.S.</option>
 			</select>
+			</div>
 		</div>
-		
-		<div>
-			<label for="physicalActivityLevel"><strong>Physical Activity Level</strong></label>
-			<select id="physicalActivityLevel" name="physicalActivityLevel">
+
+		<div class="row">
+		<div class="col-md-3">
+			<label for="physicalActivityLevel"><strong>Physical
+					Activity Level</strong></label> 
+			</div>
+			<div class="col-md-3">
+			<select id="physicalActivityLevel"
+				name="physicalActivityLevel">
 				<option value="inactive">Inactive</option>
-	       		<option value="sedentary">Sedentary</option>
-	       		<option value="active">Active</option>
-	       		<option value="extremely active">Extremely Active</option>
-		
+				<option value="sedentary">Sedentary</option>
+				<option value="active">Active</option>
+				<option value="extremely active">Extremely Active</option>
+
 			</select>
+			</div>
 		</div>
-		
+
 		<input type="submit" value="Submit Survey" class="submitButton">
-		</form:form>
-	
-	</div>
+	</form:form>
+
+</div>
+
+<c:import url="footer.jsp" />
