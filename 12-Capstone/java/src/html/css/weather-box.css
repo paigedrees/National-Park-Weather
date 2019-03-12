@@ -1,0 +1,36 @@
+body{
+	background-color: #FAFAFA;
+}
+.hedding{
+	font-size:22px;
+}
+.mainsection{
+	margin-top:50px;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+.weather-part-third-image img{
+	width: 100%;
+	height: auto;
+	margin:0px;
+}
+.weather-part-third{
+	box-shadow:1px 0px 10px #a2a2a2;
+}
+.weather-part-third-image-label{
+	position: absolute;
+	top:50px;
+	right:15px;
+	font-size: 15px;
+	box-shadow:1px 2px 5px #000;
+}
+.weather-part-third-image-label{
+	top:0px;
+	left:25px;
+	right:unset;
+}
+.fa-circle-o{
+	font-size:8px;
+}
+.weather-part-third-icon{
+	background-color: #EDEADE;
+}
