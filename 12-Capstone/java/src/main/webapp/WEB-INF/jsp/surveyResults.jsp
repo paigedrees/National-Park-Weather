@@ -6,6 +6,6 @@
 
 	<div id="surveyResults">
 	
-	
-	
+	<p> The most popular park is ${topPark.name}</p>
 	</div>
+	

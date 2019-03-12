@@ -39,6 +39,22 @@ public class JDBCsurveyDAO implements SurveyDAO{
 		return id;
 	}
 	
+	@Override
+	public String getMostPopularParkCode() {
+		String sqlGetParkCode = "SELECT parkcode, count(*) FROM survey_result \n" + 
+				"        GROUP BY parkcode\n" + 
+				"        ORDER BY count(*) DESC LIMIT 1;";
+		
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetParkCode);
+		String parkCode = "";
+		if (result.next()) {
+			parkCode = result.getString("parkcode");
+		}
+
+		
+		return parkCode;
+	}
+	
 	
 	
 }

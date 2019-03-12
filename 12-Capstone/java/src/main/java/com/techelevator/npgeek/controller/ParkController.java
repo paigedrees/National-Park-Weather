@@ -76,11 +76,13 @@ public class ParkController {
 		
 		surveyDao.save(survey);
 		
-		return "surveyResults";
+		return "redirect:/surveyResults";
 	}
 	
-	@RequestMapping("/surveyResults")
-	public String getSurveyResults(){
+	@RequestMapping(path="/surveyResults", method=RequestMethod.GET)
+	public String getSurveyResults(ModelMap modelMap){
+		modelMap.put("topPark", parkDao.getParkByCode(surveyDao.getMostPopularParkCode()));
+		
 		return "surveyResults";
 	}
 		

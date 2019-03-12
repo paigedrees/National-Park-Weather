@@ -4,4 +4,5 @@ public interface SurveyDAO {
 	
 	public void save(Survey survey);
 	
+	public String getMostPopularParkCode();
 }

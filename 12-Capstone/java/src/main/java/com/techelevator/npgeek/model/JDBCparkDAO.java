@@ -62,6 +62,8 @@ public class JDBCparkDAO implements ParkDAO {
 		if (result.next()) {
 			thisPark = createParkObject(result);
 		} 
+		
+		System.out.println(thisPark.getName());
 		return thisPark;
 	}
 	
