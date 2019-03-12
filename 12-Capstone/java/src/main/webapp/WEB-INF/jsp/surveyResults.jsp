@@ -10,6 +10,8 @@
 		<p> The park name is ${surveyResult.park.name}</p>
 		<p> The amount of votes is ${surveyResult.surveyCount}</p>
 	</c:forEach>
+
+
 	
 	</div>
 	

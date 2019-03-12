@@ -89,14 +89,16 @@ public class ParkController {
 		
 		List<SurveyResult> parksInSurvey = new ArrayList<SurveyResult>();
 		List<String> keys = new ArrayList<>(surveyDao.getMostPopularParkCodes().keySet());
-		
+		int totalSurveyCount = 0;
 		for (String code : keys) {
 			SurveyResult result = new SurveyResult();
 			result.setPark(parkDao.getParkByCode(code));
 			result.setSurveyCount(surveyDao.getMostPopularParkCodes().get(code));
 			parksInSurvey.add(result);
+			totalSurveyCount += result.getSurveyCount();
 		}
 		
+		modelMap.put("totalSurveyCount", totalSurveyCount);
 		modelMap.put("surveys", parksInSurvey);
 		
 		return "surveyResults";
