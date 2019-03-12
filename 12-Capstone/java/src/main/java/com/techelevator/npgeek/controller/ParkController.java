@@ -36,6 +36,12 @@ public class ParkController {
 	
 	@RequestMapping("/home") 
 	public String getHome(ModelMap modelMap){
+		if (modelMap.containsAttribute("submitSurvey") == false) {
+			Survey submitSurvey = new Survey();
+			modelMap.put("submitSurvey", submitSurvey);
+			
+			
+		}
 		TemperatureChoice tempKey = new TemperatureChoice();
 		tempKey.setScale("F");
 		modelMap.put("parks", parkDao.getAllParks());
@@ -45,41 +51,66 @@ public class ParkController {
 	
 	@RequestMapping("/detail")
 	public String showParkDetail(HttpServletRequest request, ModelMap modelMap) {
+		if (modelMap.containsAttribute("submitSurvey") == false) {
+			Survey submitSurvey = new Survey();
+			modelMap.put("submitSurvey", submitSurvey);
+			
+		}
 		String parkCode = request.getParameter("parkCode");
 		Park newPark = parkDao.getParkByCode(parkCode);
+		modelMap.put("parks", parkDao.getAllParks());
 		modelMap.put("park", newPark);
 		modelMap.put("weatherForecast", parkDao.getForecastByCode(parkCode));
 		return "detailPage";
 	}
 	
-	@RequestMapping(path="/survey", method=RequestMethod.GET)
-	public String getSurveyPage(ModelMap modelMap) {
-		if (modelMap.containsAttribute("survey") == false) {
-			Survey survey = new Survey();
-			modelMap.put("survey", survey);
-			
-		}
-		modelMap.put("parks", parkDao.getAllParks());
-		return "survey";
-	}
+//	@RequestMapping(path="/survey", method=RequestMethod.GET)
+//	public String getSurveyPage(ModelMap modelMap) {
+//		if (modelMap.containsAttribute("survey") == false) {
+//			Survey survey = new Survey();
+//			modelMap.put("survey", survey);
+//			
+//		}
+//		modelMap.put("parks", parkDao.getAllParks());
+//		return "survey";
+//	}
+//	
+//	@RequestMapping(path="/survey", method=RequestMethod.POST)
+//	public String processRegistrationPage(@Valid @ModelAttribute Survey survey, BindingResult result, 
+//								RedirectAttributes flash, ModelMap modelMap) {
+//		flash.addFlashAttribute("survey", survey);
+//		
+//		if (result.hasErrors()) {
+//			
+//			for(ObjectError error : result.getAllErrors()) {
+//				System.out.println(error.getDefaultMessage());
+//			}
+//			
+//			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "survey", result);
+//			
+//			return "redirect:/survey";
+//		}
+//		
+//		surveyDao.save(survey);
+//		
+//		return "redirect:/surveyResults";
+//	}
 	
-	@RequestMapping(path="/survey", method=RequestMethod.POST)
-	public String processRegistrationPage(@Valid @ModelAttribute Survey survey, BindingResult result, 
-								RedirectAttributes flash, ModelMap modelMap) {
-		flash.addFlashAttribute("survey", survey);
+
+	
+	@RequestMapping(path="/submitSurvey", method=RequestMethod.POST)
+	public String processSurvey() {
+		//@ModelAttribute Survey submitSurvey, @Valid BindingResult result, 
+		//RedirectAttributes flash
+//		if (result.hasErrors()) {
+//			
+//			flash.addAttribute("submitSurvey");
+//			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "submitSurvey", result);
+//			//TODO: go back to the original page
+//			return "redirect:/home";
+//		}
 		
-		if (result.hasErrors()) {
-			
-			for(ObjectError error : result.getAllErrors()) {
-				System.out.println(error.getDefaultMessage());
-			}
-			
-			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "survey", result);
-			
-			return "redirect:/survey";
-		}
-		
-		surveyDao.save(survey);
+		//surveyDao.save(submitSurvey);
 		
 		return "redirect:/surveyResults";
 	}
