@@ -15,11 +15,10 @@
 </head>
 
 <body>
-
-	<div class="bg">
+	
 
 	<header class="container">
-		<h1>National Park Geek</h1>
+		<img class="img-fluid logo" src="css/SquareParkLogo1.png">
 	</header>
 	<nav class="navbar navbar-dark bg-dark">
 		<ul>

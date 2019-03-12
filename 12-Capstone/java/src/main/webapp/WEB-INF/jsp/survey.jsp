@@ -5,7 +5,7 @@
 	<c:param name="temperatureChoice" value="${temperatureChoice}" />
 </c:import>
 
-<div id="surveyInfo" class="container">
+<div id="surveyInfo" class="container parkDetail">
 
 	<c:url var="surveyUrl" value="/survey" />
 	<form:form id="survey" action="${surveyUrl}" method="POST"

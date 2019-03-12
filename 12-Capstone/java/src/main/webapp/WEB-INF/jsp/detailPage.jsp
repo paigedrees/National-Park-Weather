@@ -2,45 +2,37 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
-<div class="container">
+<div class="container parkDetail">
 
 	<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg" />
 
-	<div class="row justify-content-center form-group">
+	<div class="row align-items-center">
 
-		<div class="col-md">
+		<div class="col-md-6">
 
 			<img class="img-fluid" src="${imgPark}" />
 
 		</div>
+		
+		<div class="col-md-6">
+
+			<h4 class="font-italic">"${park.inspirationalQuote}"</h4>
+			<h4>- ${park.quoteSource}</h4>
+
+		</div>
 
 	</div>
 
-	<div class="row justify-content-center form-group">
+	<div class="row p-4">
 
 		<div class="col-md">
 
-			<h3>${park.name}</h3>
+			<h2 class="text-center">${park.name}</h2>
 
 		</div>
 
 	</div>
 
-	<div class="row form-group">
-
-		<div class="col-md-6">
-
-			<h4>${park.inspirationalQuote}</h4>
-
-		</div>
-
-		<div class="col-md-6">
-
-			<h4>${park.quoteSource}</h4>
-
-		</div>
-
-	</div>
 
 	<div class="row form-group">
 
@@ -52,25 +44,25 @@
 
 	</div>
 
-	<div class="row form-group">
+	<div class="row pb-5">
 
 		<div class="col-md-4 col-sm">
-			<p>State: ${park.state}</p>
-			<p>Year Founded: ${park.yearFounded}</p>
-			<p>Annual Visitor Count: ${park.annualVisitorCount}</p>
-			<p class="price">Fee: $${park.entryFee}</p>
+			<p><span class="font-weight-bold">State:</span> ${park.state}</p>
+			<p><span class="font-weight-bold">Year Founded:</span> ${park.yearFounded}</p>
+			<p><span class="font-weight-bold">Annual Visitor Count:</span> ${park.annualVisitorCount}</p>
+			<p class="text-primary">Fee: $${park.entryFee}</p>
 		</div>
 
 		<div class="col-md-4 col-sm">
-			<p>Acreage: ${park.acreage}</p>
-			<p>Elevation: ${park.elevationInFeet} ft.</p>
-			<p>Miles of Trail: ${park.milesOfTrail} miles</p>
+			<p><span class="font-weight-bold">Acreage:</span> ${park.acreage}</p>
+			<p><span class="font-weight-bold">Elevation:</span> ${park.elevationInFeet} ft.</p>
+			<p><span class="font-weight-bold">Miles of Trail:</span> ${park.milesOfTrail} miles</p>
 		</div>
 
 		<div class="col-md-4 col-sm">
-			<p>Climate: ${park.climate}</p>
-			<p>Number of Campsites: ${park.numberOfCampsites}</p>
-			<p>Number of Animal Species: ${park.numberOfAnimalSpecies}</p>
+			<p><span class="font-weight-bold">Climate:</span> ${park.climate}</p>
+			<p><span class="font-weight-bold">Number of Campsites:</span> ${park.numberOfCampsites}</p>
+			<p><span class="font-weight-bold">Number of Animal Species:</span> ${park.numberOfAnimalSpecies}</p>
 		</div>
 
 	</div>
@@ -90,7 +82,6 @@
 
 		</c:forEach>
 	</div>
-
 
 
 </div>
