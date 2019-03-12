@@ -8,7 +8,7 @@
 	<div id="surveyInfo">
 		
 		<c:url var="surveyUrl" value ="/survey"/>
-		<form:form id="survey" action="/m3-java-capstone/survey" method="POST" modelAttribute="survey">
+		<form:form id="survey" action="${surveyUrl}" method="POST" modelAttribute="survey">
 		
 		<div>
 			<label for="favoriteParkCode"><strong>Favorite Park</strong></label>
@@ -86,8 +86,8 @@
 		
 		<div>
 			<label for="physicalActivityLevel"><strong>Physical Activity Level</strong></label>
-			<select id="physicalActivityLevel" name="favoriteParkCode">
-	       		<option value="inactive">Inactive</option>
+			<select id="physicalActivityLevel" name="physicalActivityLevel">
+				<option value="inactive">Inactive</option>
 	       		<option value="sedentary">Sedentary</option>
 	       		<option value="active">Active</option>
 	       		<option value="extremely active">Extremely Active</option>

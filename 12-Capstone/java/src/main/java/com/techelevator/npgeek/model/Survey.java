@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class Survey {
 
-	private int surveyId;
+	private long surveyId;
 	private String favoriteParkCode;
 	
 	@Email(message="please enter a valid email")
@@ -50,11 +50,11 @@ public class Survey {
 		this.physicalActivityLevel = physicalActivityLevel;
 	}
 
-	public int getSurveyId() {
+	public long getSurveyId() {
 		return surveyId;
 	}
 
-	public void setSurveyId(int surveyId) {
+	public void setSurveyId(long surveyId) {
 		this.surveyId = surveyId;
 	}
 	

@@ -73,6 +73,7 @@ public class ParkController {
 			
 			return "redirect:/survey";
 		}
+		
 		surveyDao.save(survey);
 		
 		return "surveyResults";

@@ -19,15 +19,16 @@ public class JDBCsurveyDAO implements SurveyDAO{
 	
 	@Override
 	public void save(Survey survey) {
-		//Long id = getNextId();
+		Long id = getNextId();
 		String sqlInsertSurvey = "INSERT INTO survey_result(surveyid, parkcode, emailaddress, state, activitylevel) VALUES (?,?,?,?,?)";
-		jdbcTemplate.update(sqlInsertSurvey, 1, survey.getFavoriteParkCode(), survey.getEmail(), survey.getStateOfResidence(), survey.getPhysicalActivityLevel());
+		jdbcTemplate.update(sqlInsertSurvey, id, survey.getFavoriteParkCode(), survey.getEmail(), survey.getStateOfResidence(), survey.getPhysicalActivityLevel());
+		survey.setSurveyId(id);
 		
 	}
 	
 	
 	private Long getNextId() {
-		String sqlSelectNextId = "SELECT NEXTVAL('surveyid')";
+		String sqlSelectNextId = "SELECT NEXTVAL('seq_surveyid') FROM survey_result";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectNextId);
 		Long id = null;
 		if(results.next()) {
