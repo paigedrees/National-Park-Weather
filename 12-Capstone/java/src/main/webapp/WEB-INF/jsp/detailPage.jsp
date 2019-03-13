@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+	<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg" />
+
 <c:import url="header.jsp"/>
 
 <div class="container parkDetail">
 
-	<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg" />
 
 	<div class="row p-4">
 
@@ -31,7 +32,7 @@
 
 	</div>
 
-	<div class="row">
+	<div class="row pt-4">
 
 		<div class="col-md">
 

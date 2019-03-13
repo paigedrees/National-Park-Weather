@@ -9,7 +9,8 @@
 		<div class="row parkDetail">
 		
 			<div class="col-md-6">
-				<a href="detail?parkCode=${park.code}"><img class="img-fluid" src="${imgPark}" /></a>
+				<c:url var="parkCode" value="detail?parkCode=${park.code}"/>
+				<a href="${parkCode}"><img class="img-fluid" src="${imgPark}" /></a>
 			</div>
 		
 			<div class="col-md-6">
