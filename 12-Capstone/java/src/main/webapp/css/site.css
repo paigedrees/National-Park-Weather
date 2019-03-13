@@ -1,10 +1,7 @@
-
 /* Background Colors and Images */
-
 html {
 	margin: 50px;
 	height: 100%;
-	
 }
 
 body {
@@ -20,11 +17,9 @@ body {
 	margin-bottom: 20px;
 	padding: 20px;
 	border-radius: 10px;
-	
 }
 
 /* Layout Formatting */
-
 #allParks {
 	display: flex;
 	flex-direction: column;
@@ -38,24 +33,16 @@ body {
 
 .submit {
 	margin-left: 40%;
-	
 }
 
 .formMargin {
 	margin-left: 10px;
 }
 
-
 /* Images */
-
 img {
-  border: 2px solid white;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
- 
+	border: 2px solid white;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0
+		rgba(0, 0, 0, 0.35);
 }
-
-
-
-
-

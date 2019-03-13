@@ -1,8 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-	<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg" />
+<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg" />
 
-<c:import url="header.jsp"/>
+<c:import url="header.jsp" />
 
 <div class="container parkDetail">
 
@@ -24,7 +25,7 @@
 			<img class="img-fluid" src="${imgPark}" />
 
 		</div>
-		
+
 		<div class="col-md-6">
 			<h4 class="font-italic">"${park.inspirationalQuote}"</h4>
 			<h4>- ${park.quoteSource}</h4>
@@ -45,22 +46,53 @@
 	<div class="row pb-5">
 
 		<div class="col-md-4 col-sm">
-			<p><span class="font-weight-bold">State:</span> ${park.state}</p>
-			<p><span class="font-weight-bold">Year Founded:</span> ${park.yearFounded}</p>
-			<p><span class="font-weight-bold">Annual Visitor Count:</span> ${park.annualVisitorCount}</p>
-			<p class="text-primary">Fee: $${park.entryFee}</p>
+			<p>
+				<span class="font-weight-bold">State:</span> ${park.state}
+			</p>
+			<p>
+				<span class="font-weight-bold">Year Founded:</span>
+				${park.yearFounded}
+			</p>
+			<p>
+				<span class="font-weight-bold">Annual Visitor Count:</span>
+				<fmt:formatNumber value="${park.annualVisitorCount}" type="number" />
+			</p>
+			<p class="text-danger">
+				Fee:
+				<fmt:setLocale value="en_US" />
+				<fmt:formatNumber value="${park.entryFee}" type="currency" />
+			</p>
 		</div>
 
 		<div class="col-md-4 col-sm">
-			<p><span class="font-weight-bold">Acreage:</span> ${park.acreage}</p>
-			<p><span class="font-weight-bold">Elevation:</span> ${park.elevationInFeet} ft.</p>
-			<p><span class="font-weight-bold">Miles of Trail:</span> ${park.milesOfTrail} miles</p>
+			<p>
+				<span class="font-weight-bold">Acreage:</span>
+				<fmt:formatNumber value="${park.acreage}" type="number" />
+				acres
+			</p>
+			<p>
+				<span class="font-weight-bold">Elevation:</span>
+				${park.elevationInFeet} ft.
+			</p>
+			<p>
+				<span class="font-weight-bold">Miles of Trail:</span>
+				${park.milesOfTrail} miles
+			</p>
 		</div>
 
 		<div class="col-md-4 col-sm">
-			<p><span class="font-weight-bold">Climate:</span> ${park.climate}</p>
-			<p><span class="font-weight-bold">Number of Campsites:</span> ${park.numberOfCampsites}</p>
-			<p><span class="font-weight-bold">Number of Animal Species:</span> ${park.numberOfAnimalSpecies}</p>
+			<p>
+				<span class="font-weight-bold">Climate:</span> ${park.climate}
+			</p>
+			<p>
+				<span class="font-weight-bold">Number of Campsites:</span>
+				<fmt:formatNumber value="${park.numberOfCampsites}" type="number" />
+			</p>
+			<p>
+				<span class="font-weight-bold">Number of Animal Species:</span>
+				<fmt:formatNumber value="${park.numberOfAnimalSpecies}"
+					type="number" />
+			</p>
 		</div>
 
 	</div>
