@@ -2,21 +2,31 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<<<<<<< HEAD
 <c:url var="surveySubmitURL" value="/survey/save" />
 <c:url var="homePageURL" value="/home"/>
 <c:url var="logoImgURL" value="/img/logo.png" />
 <c:url var="cssURL" value="/css/site.css" />
 
+=======
+>>>>>>> c5c71cda0f4703cd881385a4166701c77bbf9021
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>National Park Geek</title>
 <link rel="stylesheet"
+<<<<<<< HEAD
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="${cssURL}">
+=======
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+crossorigin="anonymous">
+<link rel="stylesheet" href="css/site.css">
+>>>>>>> c5c71cda0f4703cd881385a4166701c77bbf9021
 </head>
 
 <body>
@@ -38,14 +48,14 @@
 								<option value="${park.code}">${park.name}</option>
 							</c:forEach>
 						</select>
-				</div>
+					</div>
 
 				<div>
 						<input type="hidden" value="${pageURL}" >
 						<label for="email"><strong>Email</strong></label>
 						<form:input path="email" placeholder="enter email" />
 						<form:errors path="email" class="error" />
-				</div>
+					</div>
 
 				<div>
 						<label for="stateOfResidence"><strong>State of Residence</strong></label>
@@ -102,8 +112,8 @@
 							<option value="WI">Wisconsin</option>
 							<option value="WY">Wyoming</option>
 							<option value="NOTINUS">Outside the U.S.</option>
-							</select>
-				</div>
+						</select>
+					</div>
 
 				<div>
 						<label for="physicalActivityLevel"><strong>Physical Activity Level</strong></label>

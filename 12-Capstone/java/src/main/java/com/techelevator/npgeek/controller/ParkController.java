@@ -20,78 +20,76 @@ import com.techelevator.npgeek.model.Survey;
 import com.techelevator.npgeek.model.SurveyDAO;
 import com.techelevator.npgeek.model.SurveyResult;
 
-
 @Controller
 public class ParkController {
 
-	@Autowired
-	ParkDAO parkDao;
-	
-	@Autowired
-	SurveyDAO surveyDao;
-	
-	@RequestMapping(value={"", "/", "/home"}, method=RequestMethod.GET)
-	public String getPageHome(ModelMap pageData){
+@Autowired
+ParkDAO parkDao;
 
-		// three pieces of data for survey form
-		pageData.put("parks", parkDao.getAllParks());
-		pageData.addAttribute("pageURL", "/home");
-		pageData.addAttribute("parkSurvey", new Survey());
+@Autowired
+SurveyDAO surveyDao;
 
-		return "homePage";
-	}
-	
-	@RequestMapping(path="/survey/result", method=RequestMethod.GET)
-	public String getPageResult(
-			ModelMap pageData
-			){
-		//TODO - BM make getMostPopularParkCodes() return a park and a park count
-		List<SurveyResult> parksInSurvey = new ArrayList<SurveyResult>();
-		List<String> keys = new ArrayList<>(surveyDao.getMostPopularParkCodes().keySet());
-		
-		for (String code : keys) {
-			SurveyResult surveyResult = new SurveyResult();
-			surveyResult.setPark(parkDao.getParkByCode(code));
-			surveyResult.setSurveyCount(surveyDao.getMostPopularParkCodes().get(code));
-			parksInSurvey.add(surveyResult);
-		}
-		
-		System.out.println("getPageResult(): " + pageData.get("pageURL"));
-		pageData.put("surveys", parksInSurvey);
-		
-		// three pieces of data for survey form
-		pageData.put("parks", parkDao.getAllParks());
-		pageData.addAttribute("pageURL", "/home");
-		pageData.addAttribute("parkSurvey", new Survey());
+@RequestMapping(value={"", "/", "/home"}, method=RequestMethod.GET)
+public String getPageHome(ModelMap pageData){
 
-		return "resultPage";
-	}
+    // three pieces of data for survey form
+    pageData.put("parks", parkDao.getAllParks());
+    pageData.addAttribute("pageURL", "/home");
+    pageData.addAttribute("parkSurvey", new Survey());
 
-	@RequestMapping(path="/detail", method=RequestMethod.GET)
-	public String getPageDetail(
-			@RequestParam(required = true, defaultValue = "CVNP") String parkCode,
-			ModelMap pageData
-			) {
-		pageData.put("park", parkDao.getParkByCode(parkCode));
-		pageData.put("weatherForecast", parkDao.getForecastByCode(parkCode));
-		
-		// three pieces of data for survey form
-		pageData.put("parks", parkDao.getAllParks());
-		pageData.addAttribute("pageURL", "/detail?parkCode=" + parkCode);
-		pageData.addAttribute("parkSurvey", new Survey());
+    return "homePage";
+}
 
-		return "detailPage";
-	}
+@RequestMapping(path="/survey/result", method=RequestMethod.GET)
+public String getPageResult(
+        ModelMap pageData
+        ){
+    List<SurveyResult> parksInSurvey = new ArrayList<SurveyResult>();
+    List<String> keys = new ArrayList<>(surveyDao.getMostPopularParkCodes().keySet());
+    
+    for (String code : keys) {
+        SurveyResult surveyResult = new SurveyResult();
+        surveyResult.setPark(parkDao.getParkByCode(code));
+        surveyResult.setSurveyCount(surveyDao.getMostPopularParkCodes().get(code));
+        parksInSurvey.add(surveyResult);
+    }
+    
+    System.out.println("getPageResult(): " + pageData.get("pageURL"));
+    pageData.put("surveys", parksInSurvey);
+    
+    // three pieces of data for survey form
+    pageData.put("parks", parkDao.getAllParks());
+    pageData.addAttribute("pageURL", "/home");
+    pageData.addAttribute("parkSurvey", new Survey());
 
-	@RequestMapping(path="/survey/save", method=RequestMethod.POST)
-	public String postSurvey(
-	        @Valid @ModelAttribute Survey parkSurvey,
-	        BindingResult result,
-			RedirectAttributes flash
-	    ) {
-		surveyDao.save(parkSurvey);
+    return "resultPage";
+}
 
-		flash.addFlashAttribute("pageURL", parkSurvey.getPageURL());
-		return "redirect:/survey/result";
-	}
+@RequestMapping(path="/detail", method=RequestMethod.GET)
+public String getPageDetail(
+        @RequestParam(required = true, defaultValue = "CVNP") String parkCode,
+        ModelMap pageData
+        ) {
+    pageData.put("park", parkDao.getParkByCode(parkCode));
+    pageData.put("weatherForecast", parkDao.getForecastByCode(parkCode));
+    
+    // three pieces of data for survey form
+    pageData.put("parks", parkDao.getAllParks());
+    pageData.addAttribute("pageURL", "/detail?parkCode=" + parkCode);
+    pageData.addAttribute("parkSurvey", new Survey());
+
+    return "detailPage";
+}
+
+@RequestMapping(path="/survey/save", method=RequestMethod.POST)
+public String postSurvey(
+        @Valid @ModelAttribute Survey parkSurvey,
+        BindingResult result,
+        RedirectAttributes flash
+    ) {
+    surveyDao.save(parkSurvey);
+
+    flash.addFlashAttribute("pageURL", parkSurvey.getPageURL());
+    return "redirect:/survey/result";
+}
 }
