@@ -47,7 +47,7 @@
 							<input type="hidden" value="${pageURL}"> <label
 								for="email"><strong>Email</strong></label>
 							<form:input path="email" placeholder="enter email"
-								class="form-control" type="email"/>
+								class="form-control" type="email" />
 							<form:errors path="email" class="error" />
 						</div>
 

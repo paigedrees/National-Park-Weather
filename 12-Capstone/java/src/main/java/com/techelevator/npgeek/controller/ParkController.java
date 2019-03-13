@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +24,7 @@ import com.techelevator.npgeek.model.SurveyResult;
 
 @Controller
 public class ParkController {
+
 	
 	@Autowired
 	ParkDAO parkDao;
@@ -40,7 +42,7 @@ public class ParkController {
 	
 	    return "homePage";
 	}
-	
+
 	@RequestMapping(path="/survey/result", method=RequestMethod.GET)
 	public String getPageResult(
 	        HttpSession session,
@@ -68,7 +70,7 @@ public class ParkController {
 	
 	    return "resultPage";
 	}
-	
+
 	@RequestMapping(path="/detail", method=RequestMethod.GET)
 	public String getPageDetail(
 	        @RequestParam(required = true, defaultValue = "CVNP") String parkCode,
@@ -84,17 +86,27 @@ public class ParkController {
 	
 	    return "detailPage";
 	}
-	
+
 	@RequestMapping(path="/survey/save", method=RequestMethod.POST)
 	public String postSurvey(
 	        @Valid @ModelAttribute Survey parkSurvey,
 	        BindingResult result,
-	        ModelMap pageData,
-	        RedirectAttributes flash
-	    ) {
+	        RedirectAttributes flash) {
+		 flash.addFlashAttribute("parkSurvey", parkSurvey);
+		
+		if (result.hasErrors()) {
+			for(ObjectError error : result.getAllErrors()) {
+				System.out.println(error.getDefaultMessage());
+			}
+			
+			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "parkSurvey", result);
+			
+			return "redirect:/home";
+		}
+		
 	    surveyDao.save(parkSurvey);
-	
-	    flash.addFlashAttribute("pageURL", pageData.get("pageURL"));
+
+	 
 	    return "redirect:/survey/result";
 	}
 	
@@ -115,5 +127,5 @@ public class ParkController {
 		
 		System.out.println("postTemperatureFlip(): " + pageURL);
 		return "redirect:" + pageURL;
-	}	
+	}
 }
