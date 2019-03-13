@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<c:url var="logo" value="css/CircleParkLogo.png" />
+
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +23,7 @@
 		<div class="row">
 
 			<div class="col-md-3">
-				<a href="<c:url value="/home"/>"><img class="img-fluid logo" src="css/CircleParkLogo.png"></a>
+				<a href="<c:url value="/home"/>"><img class="img-fluid logo" src="${logo}"></a>
 			</div>
 
 			<div class="col-md-9 parkDetail">
@@ -38,7 +40,8 @@
 				</div>
 
 				<div>
-				<h3>${pageURL }</h3>
+<%-- 				<h3>${pageURL }</h3> --%>
+						<input type="hidden" value="${pageURL}" >
 						<label for="email"><strong>Email</strong></label>
 						<form:input path="email" placeholder="enter email" />
 						<form:errors path="email" class="error" />
