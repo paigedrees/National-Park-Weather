@@ -2,31 +2,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<<<<<<< HEAD
 <c:url var="surveySubmitURL" value="/survey/save" />
 <c:url var="homePageURL" value="/home"/>
 <c:url var="logoImgURL" value="/img/logo.png" />
 <c:url var="cssURL" value="/css/site.css" />
 
-=======
->>>>>>> c5c71cda0f4703cd881385a4166701c77bbf9021
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>National Park Geek</title>
 <link rel="stylesheet"
-<<<<<<< HEAD
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="${cssURL}">
-=======
-href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-crossorigin="anonymous">
-<link rel="stylesheet" href="css/site.css">
->>>>>>> c5c71cda0f4703cd881385a4166701c77bbf9021
 </head>
 
 <body>
@@ -40,8 +30,8 @@ crossorigin="anonymous">
 
 			<div class="col-md-9 parkDetail">
 			<form:form id="submitSurvey" action="${surveySubmitURL}" method="POST" modelAttribute="parkSurvey">
-
-				<div>
+				<div class="row">
+				<div class="form-group">
 						<label for="favoriteParkCode"><strong>Favorite Park</strong></label>
 						<select id="favoriteParkCode" name="favoriteParkCode">
 							<c:forEach var="park" items="${parks}">
@@ -50,14 +40,15 @@ crossorigin="anonymous">
 						</select>
 					</div>
 
-				<div>
-						<input type="hidden" value="${pageURL}" >
+				<div class="form-group">
+						<input type="hidden" name="pageURL" value="${pageURL}" >
 						<label for="email"><strong>Email</strong></label>
 						<form:input path="email" placeholder="enter email" />
 						<form:errors path="email" class="error" />
 					</div>
 
 				<div>
+				</div>
 						<label for="stateOfResidence"><strong>State of Residence</strong></label>
 						<select id="stateOfResidence" name="stateOfResidence">
 							<option value="AL">Alabama</option>
