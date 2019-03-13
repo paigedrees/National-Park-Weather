@@ -15,3 +15,4 @@
 	
 	</div>
 	
+<c:import url="footer.jsp" />
