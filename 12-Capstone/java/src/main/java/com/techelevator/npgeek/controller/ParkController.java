@@ -1,28 +1,24 @@
 package com.techelevator.npgeek.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.techelevator.npgeek.model.Park;
 import com.techelevator.npgeek.model.ParkDAO;
 import com.techelevator.npgeek.model.Survey;
 import com.techelevator.npgeek.model.SurveyDAO;
 import com.techelevator.npgeek.model.SurveyResult;
-import com.techelevator.npgeek.model.TemperatureChoice;
 
 
 @Controller
@@ -34,103 +30,67 @@ public class ParkController {
 	@Autowired
 	SurveyDAO surveyDao;
 	
-	@RequestMapping("/home") 
-	public String getHome(ModelMap modelMap){
-		if (modelMap.containsAttribute("submitSurvey") == false) {
-			Survey submitSurvey = new Survey();
-			modelMap.put("submitSurvey", submitSurvey);
-			
-			
-		}
-		TemperatureChoice tempKey = new TemperatureChoice();
-		tempKey.setScale("F");
-		modelMap.put("parks", parkDao.getAllParks());
-		modelMap.put("temperatureChoice", tempKey);
+	@RequestMapping(value={"", "/", "/home"}, method=RequestMethod.GET)
+	public String getPageHome(ModelMap pageData){
+
+		// three pieces of data for survey form
+		pageData.put("parks", parkDao.getAllParks());
+		pageData.addAttribute("pageURL", "/home");
+		pageData.addAttribute("parkSurvey", new Survey());
+
 		return "homePage";
 	}
 	
-	@RequestMapping("/detail")
-	public String showParkDetail(HttpServletRequest request, ModelMap modelMap) {
-		if (modelMap.containsAttribute("submitSurvey") == false) {
-			Survey submitSurvey = new Survey();
-			modelMap.put("submitSurvey", submitSurvey);
-			
-		}
-		String parkCode = request.getParameter("parkCode");
-		Park newPark = parkDao.getParkByCode(parkCode);
-		modelMap.put("parks", parkDao.getAllParks());
-		modelMap.put("park", newPark);
-		modelMap.put("weatherForecast", parkDao.getForecastByCode(parkCode));
-		return "detailPage";
-	}
-	
-//	@RequestMapping(path="/survey", method=RequestMethod.GET)
-//	public String getSurveyPage(ModelMap modelMap) {
-//		if (modelMap.containsAttribute("survey") == false) {
-//			Survey survey = new Survey();
-//			modelMap.put("survey", survey);
-//			
-//		}
-//		modelMap.put("parks", parkDao.getAllParks());
-//		return "survey";
-//	}
-//	
-//	@RequestMapping(path="/survey", method=RequestMethod.POST)
-//	public String processRegistrationPage(@Valid @ModelAttribute Survey survey, BindingResult result, 
-//								RedirectAttributes flash, ModelMap modelMap) {
-//		flash.addFlashAttribute("survey", survey);
-//		
-//		if (result.hasErrors()) {
-//			
-//			for(ObjectError error : result.getAllErrors()) {
-//				System.out.println(error.getDefaultMessage());
-//			}
-//			
-//			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "survey", result);
-//			
-//			return "redirect:/survey";
-//		}
-//		
-//		surveyDao.save(survey);
-//		
-//		return "redirect:/surveyResults";
-//	}
-	
-
-	
-	@RequestMapping(path="/submitSurvey", method=RequestMethod.POST)
-	public String processSurvey() {
-		//@ModelAttribute Survey submitSurvey, @Valid BindingResult result, 
-		//RedirectAttributes flash
-//		if (result.hasErrors()) {
-//			
-//			flash.addAttribute("submitSurvey");
-//			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "submitSurvey", result);
-//			//TODO: go back to the original page
-//			return "redirect:/home";
-//		}
-		
-		//surveyDao.save(submitSurvey);
-		
-		return "redirect:/surveyResults";
-	}
-	
-	@RequestMapping(path="/surveyResults", method=RequestMethod.GET)
-	public String getSurveyResults(ModelMap modelMap){
-		
+	@RequestMapping(path="/survey/result", method=RequestMethod.GET)
+	public String getPageResult(
+			ModelMap pageData
+			){
 		List<SurveyResult> parksInSurvey = new ArrayList<SurveyResult>();
 		List<String> keys = new ArrayList<>(surveyDao.getMostPopularParkCodes().keySet());
 		
 		for (String code : keys) {
-			SurveyResult result = new SurveyResult();
-			result.setPark(parkDao.getParkByCode(code));
-			result.setSurveyCount(surveyDao.getMostPopularParkCodes().get(code));
-			parksInSurvey.add(result);
+			SurveyResult surveyResult = new SurveyResult();
+			surveyResult.setPark(parkDao.getParkByCode(code));
+			surveyResult.setSurveyCount(surveyDao.getMostPopularParkCodes().get(code));
+			parksInSurvey.add(surveyResult);
 		}
 		
-		modelMap.put("surveys", parksInSurvey);
+		System.out.println("getPageResult(): " + pageData.get("pageURL"));
+		pageData.put("surveys", parksInSurvey);
 		
-		return "surveyResults";
+		// three pieces of data for survey form
+		pageData.put("parks", parkDao.getAllParks());
+		pageData.addAttribute("pageURL", "/home");
+		pageData.addAttribute("parkSurvey", new Survey());
+
+		return "resultPage";
 	}
+
+	@RequestMapping(path="/detail", method=RequestMethod.GET)
+	public String getPageDetail(
+			@RequestParam(required = true, defaultValue = "CVNP") String parkCode,
+			ModelMap pageData
+			) {
+		pageData.put("park", parkDao.getParkByCode(parkCode));
+		pageData.put("weatherForecast", parkDao.getForecastByCode(parkCode));
 		
+		// three pieces of data for survey form
+		pageData.put("parks", parkDao.getAllParks());
+		pageData.addAttribute("pageURL", "/detail?parkCode=" + parkCode);
+		pageData.addAttribute("parkSurvey", new Survey());
+
+		return "detailPage";
+	}
+
+	@RequestMapping(path="/survey/save", method=RequestMethod.POST)
+	public String postSurvey(
+	        @Valid @ModelAttribute Survey parkSurvey,
+	        BindingResult result,
+			RedirectAttributes flash
+	    ) {
+		surveyDao.save(parkSurvey);
+
+		flash.addFlashAttribute("pageURL", parkSurvey.getPageURL());
+		return "redirect:/survey/result";
+	}
 }

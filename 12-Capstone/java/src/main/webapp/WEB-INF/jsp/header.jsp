@@ -1,3 +1,4 @@
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
@@ -16,7 +17,6 @@
 
 <body>
 
-
 	<header class="container">
 		<div class="row">
 
@@ -25,31 +25,27 @@
 			</div>
 
 			<div class="col-md-9 parkDetail">
-			<c:url var="surveyUrl" value="/submitSurvey" />
-			<form:form id="submitSurvey" action="${surveyUrl}" method="POST"
-				modelAttribute="submitSurvey">
+			<c:url var="surveyUrl" value="/survey/save" />
+			<form:form id="submitSurvey" action="${surveyUrl}" method="POST" modelAttribute="parkSurvey">
 
 				<div>
-					
-						<label for="favoriteParkCode"><strong>Favorite
-								Park</strong></label>
+						<label for="favoriteParkCode"><strong>Favorite Park</strong></label>
 						<select id="favoriteParkCode" name="favoriteParkCode">
 							<c:forEach var="park" items="${parks}">
 								<option value="${park.code}">${park.name}</option>
-
 							</c:forEach>
 						</select>
 				</div>
 
 				<div>
+				<h3>${pageURL }</h3>
 						<label for="email"><strong>Email</strong></label>
 						<form:input path="email" placeholder="enter email" />
 						<form:errors path="email" class="error" />
 				</div>
 
 				<div>
-						<label for="stateOfResidence"><strong>State of
-								Residency</strong></label>
+						<label for="stateOfResidence"><strong>State of Residence</strong></label>
 						<select id="stateOfResidence" name="stateOfResidence">
 							<option value="AL">Alabama</option>
 							<option value="AK">Alaska</option>
@@ -107,20 +103,18 @@
 				</div>
 
 				<div>
-						<label for="physicalActivityLevel"><strong>Physical
-								Activity Level</strong></label>
+						<label for="physicalActivityLevel"><strong>Physical Activity Level</strong></label>
 						<select id="physicalActivityLevel" name="physicalActivityLevel">
 							<option value="inactive">Inactive</option>
 							<option value="sedentary">Sedentary</option>
 							<option value="active">Active</option>
 							<option value="extremely active">Extremely Active</option>
-
 						</select>
 				</div>
 				
+				<input type="hidden" name="pageURL" value="${param.pageURL}">
 				<input type="submit" value="Submit Survey" class="btn btn-dark submitButton float-right">
 			</form:form>
 			</div>
 		</div>
-
 	</header>

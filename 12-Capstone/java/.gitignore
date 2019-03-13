@@ -6,3 +6,5 @@
 **/.recommenders
 **/bin/
 **/Servers/
+**/samples/
+**/src/comp/
