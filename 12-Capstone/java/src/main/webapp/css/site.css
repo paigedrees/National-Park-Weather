@@ -50,6 +50,16 @@ body {
 	justify-content: flex-start;
 }
 
+.submit {
+	margin-left: 40%;
+	margin-top: 5px;
+	
+}
+
+.formMargin {
+	margin-left: 10px;
+}
+
 /* detailPage Grid Info */
 
 /* #detailGrid { */
