@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<c:url var="homePageURL" value="/home"/>
 
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@
 		<div class="row">
 
 			<div class="col-md-3">
-				<a href="<c:url value="/home"/>"><img class="img-fluid logo" src="css/CircleParkLogo.png"></a>
+				<a href=""><img class="img-fluid logo" src="../img/logo.png"></a>
 			</div>
 
 			<div class="col-md-9 parkDetail">
