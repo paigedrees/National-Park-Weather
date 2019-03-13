@@ -56,6 +56,15 @@ function animation_in(slide){
   var text = $(slide).find('p');
   var button = $(slide).find('button');
   var image = $(slide).find('img');
+
+
+  var weather = $(slide).find('.slide-content');
+  
+  // TweenMax.fromTo(weather, 0.6,{autoAlpha:0, x:100}, {autoAlpha:0.6, x:0, ease: Power2.easeOut});
+  // TweenMax.fromTo(weather, 0.5,{autoAlpha:0, x:-200}, {autoAlpha:1, x:0, ease: Power2.easeOut},'-0.1');
+  // TweenMax.fromTo(weather, 0.8,{autoAlpha:0, x:50}, {autoAlpha:1, x:0, ease: Power2.easeOut});
+  TweenMax.to(weather, 0, {autoAlpha:1,scale:1});
+  
   
   TweenMax.fromTo(title, 0.6,{autoAlpha:0, x:100}, {autoAlpha:0.6, x:0, ease: Power2.easeOut});
   TweenMax.fromTo(subtitle, 0.5,{autoAlpha:0, x:-200}, {autoAlpha:1, x:0, ease: Power2.easeOut},'-0.1');
