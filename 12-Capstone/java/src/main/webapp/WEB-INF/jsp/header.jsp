@@ -54,7 +54,7 @@
 
 
 					</div>
-					<div class="row">
+					<div class="row align-items-end">
 						<div class="form-group">
 							<label for="stateOfResidence"><strong>State of
 									Residence</strong></label> <select id="stateOfResidence" name="stateOfResidence"
@@ -128,7 +128,7 @@
 							<div>
 								<input type="hidden" name="pageURL" value="${pageURL}">
 								<input type="submit" value="Submit Survey"
-								class="btn btn-dark submitButton float-right mt-4">
+								class="btn btn-dark submitButton float-right">
 								</div>
 						</div>
 					</div>
