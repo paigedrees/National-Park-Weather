@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <c:url var="surveySubmitURL" value="/survey/save" />
-<c:url var="homePageURL" value="/home"/>
+<c:url var="homePageURL" value="/home" />
 <c:url var="logoImgURL" value="/img/logo.png" />
 <c:url var="cssURL" value="/css/site.css" />
 
@@ -17,6 +17,17 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="${cssURL}">
+<link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica" rel="stylesheet">
+<style>
+body {
+font-family: 'IM Fell DW Pica', serif;
+}
+p {
+font-family: 'arial';
+}
+
+
+</style>
 </head>
 
 <body>
@@ -25,7 +36,8 @@
 		<div class="row">
 
 			<div class="col-md-3">
-			<a href="<c:url value="/home"/>"><img class="img-fluid logo" src="${logoImgURL}"></a>
+				<a href="<c:url value="/home"/>"><img class="img-fluid logo"
+					src="${logoImgURL}"></a>
 			</div>
 
 			<div class="col-md-9 parkDetail">
@@ -42,19 +54,20 @@
 									<option value="${park.code}">${park.name}</option>
 								</c:forEach>
 							</select>
+							<form:errors path="favoriteParkCode" class="error" />
 						</div>
 
 						<div class="form-group formMargin">
 							<input type="hidden" value="${pageURL}"> <label
 								for="email"><strong>Email</strong></label>
 							<form:input path="email" placeholder="enter email"
-								class="form-control" />
+								class="form-control" type="email"/>
 							<form:errors path="email" class="error" />
 						</div>
 
 
 					</div>
-					<div class="row">
+					<div class="row align-items-end">
 						<div class="form-group">
 							<label for="stateOfResidence"><strong>State of
 									Residence</strong></label> <select id="stateOfResidence" name="stateOfResidence"
@@ -112,6 +125,7 @@
 								<option value="WY">Wyoming</option>
 								<option value="NOTINUS">Outside the U.S.</option>
 							</select>
+							<form:errors path="stateOfResidence" class="error" />
 						</div>
 
 						<div class="form-group formMargin">
@@ -123,20 +137,21 @@
 								<option value="active">Active</option>
 								<option value="extremely active">Extremely Active</option>
 							</select>
+							<form:errors path="physicalActivityLevel" class="error" />
 						</div>
 						<div class="form-group submit">
 							<div>
 								<input type="hidden" name="pageURL" value="${pageURL}">
 								<input type="submit" value="Submit Survey"
-								class="btn btn-dark submitButton float-right mt-4">
-								</div>
+									class="btn btn-dark submitButton float-right">
+							</div>
 						</div>
 					</div>
 					<div>
-						
 
-							<input type="hidden" name="pageURL" value="${param.pageURL}">
-						
+
+						<input type="hidden" name="pageURL" value="${param.pageURL}">
+
 					</div>
 
 				</form:form>
