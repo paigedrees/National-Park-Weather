@@ -1,5 +1,7 @@
 package com.techelevator.npgeek.model;
 
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -12,21 +14,26 @@ public class Survey {
 	public void setPageURL(String pageURL) {
 		this.pageURL = pageURL;
 	}
-	
-	
+
+
 	private long surveyId;
+
+	@NotBlank(message="please enter valid park")
+	@Size(min=1, max=50)
 	private String favoriteParkCode;
-	
+
 	@Email(message="please enter a valid email")
 	@NotBlank(message="please enter a valid email")
 	private String email;
 
-	
+	@NotBlank(message="please enter a state of residency")
+	@Size(min=1, max=25)
 	private String stateOfResidence;
-	
-	
+
+	@NotBlank(message="please enter your physical activity level")
+	@Size(min=1, max=20)
 	private String physicalActivityLevel;
-	
+
 
 	public String getFavoriteParkCode() {
 		return favoriteParkCode;
@@ -68,6 +75,6 @@ public class Survey {
 		this.surveyId = surveyId;
 	}
 
-	
-	
+
+
 }

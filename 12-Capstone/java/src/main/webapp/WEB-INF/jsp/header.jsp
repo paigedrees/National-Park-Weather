@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <c:url var="surveySubmitURL" value="/survey/save" />
-<c:url var="homePageURL" value="/home"/>
+<c:url var="homePageURL" value="/home" />
 <c:url var="logoImgURL" value="/img/logo.png" />
 <c:url var="cssURL" value="/css/site.css" />
 
@@ -25,7 +25,8 @@
 		<div class="row">
 
 			<div class="col-md-3">
-			<a href="<c:url value="/home"/>"><img class="img-fluid logo" src="${logoImgURL}"></a>
+				<a href="<c:url value="/home"/>"><img class="img-fluid logo"
+					src="${logoImgURL}"></a>
 			</div>
 
 			<div class="col-md-9 parkDetail">
@@ -42,6 +43,7 @@
 									<option value="${park.code}">${park.name}</option>
 								</c:forEach>
 							</select>
+							<form:errors path="favoriteParkCode" class="error" />
 						</div>
 
 						<div class="form-group formMargin">
@@ -112,6 +114,7 @@
 								<option value="WY">Wyoming</option>
 								<option value="NOTINUS">Outside the U.S.</option>
 							</select>
+							<form:errors path="stateOfResidence" class="error" />
 						</div>
 
 						<div class="form-group formMargin">
@@ -123,20 +126,21 @@
 								<option value="active">Active</option>
 								<option value="extremely active">Extremely Active</option>
 							</select>
+							<form:errors path="physicalActivityLevel" class="error" />
 						</div>
 						<div class="form-group submit">
 							<div>
 								<input type="hidden" name="pageURL" value="${pageURL}">
 								<input type="submit" value="Submit Survey"
-								class="btn btn-dark submitButton float-right">
-								</div>
+									class="btn btn-dark submitButton float-right">
+							</div>
 						</div>
 					</div>
 					<div>
-						
 
-							<input type="hidden" name="pageURL" value="${param.pageURL}">
-						
+
+						<input type="hidden" name="pageURL" value="${param.pageURL}">
+
 					</div>
 
 				</form:form>
