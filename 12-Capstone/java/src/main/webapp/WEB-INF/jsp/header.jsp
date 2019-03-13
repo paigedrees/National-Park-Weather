@@ -17,6 +17,17 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="${cssURL}">
+<link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica" rel="stylesheet">
+<style>
+body {
+font-family: 'IM Fell DW Pica', serif;
+}
+p {
+font-family: 'arial';
+}
+
+
+</style>
 </head>
 
 <body>
@@ -50,7 +61,7 @@
 							<input type="hidden" value="${pageURL}"> <label
 								for="email"><strong>Email</strong></label>
 							<form:input path="email" placeholder="enter email"
-								class="form-control" />
+								class="form-control" type="email"/>
 							<form:errors path="email" class="error" />
 						</div>
 
