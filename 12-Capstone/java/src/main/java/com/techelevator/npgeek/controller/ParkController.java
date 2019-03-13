@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,8 +42,7 @@ public String getPageHome(ModelMap pageData){
 }
 
 @RequestMapping(path="/survey/result", method=RequestMethod.GET)
-public String getPageResult(
-        ModelMap pageData
+public String getPageResult(ModelMap pageData
         ){
     List<SurveyResult> parksInSurvey = new ArrayList<SurveyResult>();
     List<String> keys = new ArrayList<>(surveyDao.getMostPopularParkCodes().keySet());
@@ -85,11 +85,23 @@ public String getPageDetail(
 public String postSurvey(
         @Valid @ModelAttribute Survey parkSurvey,
         BindingResult result,
-        RedirectAttributes flash
-    ) {
+        RedirectAttributes flash) {
+	 flash.addFlashAttribute("parkSurvey", parkSurvey);
+	 flash.addFlashAttribute("pageURL", parkSurvey.getPageURL());
+	
+	if (result.hasErrors()) {
+		for(ObjectError error : result.getAllErrors()) {
+			System.out.println(error.getDefaultMessage());
+		}
+		
+		flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "parkSurvey", result);
+		
+		return "redirect:/home";
+	}
+	
     surveyDao.save(parkSurvey);
 
-    flash.addFlashAttribute("pageURL", parkSurvey.getPageURL());
+ 
     return "redirect:/survey/result";
 }
 }
