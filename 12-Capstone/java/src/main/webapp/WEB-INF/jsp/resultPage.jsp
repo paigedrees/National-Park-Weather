@@ -3,11 +3,13 @@
 <c:import url="header.jsp" />
 
 <div class="container" id="surveys">
-<div class="row resultsRow">
+
+
 	
-		
+		<div class="row resultsRow">
 		<c:forEach var="surveyResult" items="${surveys}">
-		<div class="col-sm-4">
+		
+		<div class="col-md-auto col-lg-4">
 			
 			<div class="card" style="width: 23rem;">
 			
@@ -16,18 +18,23 @@
 				
 				<div class="card-body">
 					<h5 class="card-title"><strong>${surveyResult.park.name}</strong></h5>
-					<h6 class="card-text" style="color:#2E86C1  ;"><strong>${surveyResult.surveyCount} Votes!</strong></h6>
+					<h6 class="card-text votesResult" style="color:#2E86C1  ;"><strong>${surveyResult.surveyCount} votes!</strong></h6>
 					<c:url var="detail" value="/detail?parkCode=${surveyResult.park.code}"/>
-					<a href="${detail}" class="btn btn-dark">View this Park</a>
+					<a href="${detail}" class="btn btn-dark btnResult">View this Park</a>
 				</div>
 			</div>
+			
 			</div>
+			
 		</c:forEach>
+		</div>
+		
 		
 
 
 	
-	</div>
+
+
 </div>
 
 <c:import url="footer.jsp" />
