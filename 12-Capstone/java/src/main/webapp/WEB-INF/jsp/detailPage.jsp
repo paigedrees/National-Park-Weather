@@ -2,6 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg" />
+<c:url var="temperatureSubmitURL" value="/temperature/flipScale" />
 
 <c:import url="header.jsp" />
 
@@ -27,7 +28,7 @@
 		</div>
 
 		<div class="col-md-6">
-			<h4 class="font-italic">"${park.inspirationalQuote}"</h4>
+			<p class="font-italic font-weight-bold">&ldquo;${park.inspirationalQuote}&rdquo;</p>
 			<h4>- ${park.quoteSource}</h4>
 		</div>
 
@@ -57,7 +58,7 @@
 				<span class="font-weight-bold">Annual Visitor Count:</span>
 				<fmt:formatNumber value="${park.annualVisitorCount}" type="number" />
 			</p>
-			<p class="text-danger">
+			<p class="font-weight-bold">
 				Fee:
 				<fmt:setLocale value="en_US" />
 				<fmt:formatNumber value="${park.entryFee}" type="currency" />
@@ -98,14 +99,33 @@
 	</div>
 
 	<div class="row form-group">
+		<!-- === Temperature Scale === -->
+		<!-- tempScale defaults to 'F' -->
+		<c:if test = "${empty sessionScope.tempScale}">
+			<c:set var="tempScale" value="F" scope="session"  />
+		</c:if>
+
+		<form action="${temperatureSubmitURL}" method="POST">
+		<input type="hidden" name="tempScale" value="${sessionScope.tempScale}">
+		<input type="hidden" name="pageURL" value="${pageURL}">
+		
+		<c:if test = "${sessionScope.tempScale == 'F'}">
+			<button class="tempScale">degree C</button><br/>
+		</c:if>
+		<c:if test = "${sessionScope.tempScale == 'C'}">
+			<button class="tempScale">degree F</button><br/>
+		</c:if>
+		</form>
+		<!-- === end Temperature Scale === -->
+		
 		<c:forEach var="weather" items="${weatherForecast}">
 			<c:url var="imgWeather"
 				value="/img/weather/${weather.forecastText}.png" />
 			<div class="col-md">
 				<p>${weather.dayName}</p>
 				<img class="img-fluid" src="${imgWeather}" />
-				<p>Low: ${weather.getLowTempAs('F')}</p>
-				<p>High: ${weather.getHighTempAs('F')}</p>
+				<p>Low: ${weather.getLowTempAs(sessionScope.tempScale)}</p>
+				<p>High: ${weather.getHighTempAs(sessionScope.tempScale)}</p>
 				<p id="forecast">${weather.forecast}</p>
 				<p id="recommendation">${weather.getRecommendation()}</p>
 			</div>

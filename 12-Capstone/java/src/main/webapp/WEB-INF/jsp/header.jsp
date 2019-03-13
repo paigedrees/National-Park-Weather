@@ -17,17 +17,6 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="${cssURL}">
-<link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica" rel="stylesheet">
-<style>
-body {
-font-family: 'IM Fell DW Pica', serif;
-}
-p {
-font-family: 'arial';
-}
-
-
-</style>
 </head>
 
 <body>
@@ -36,15 +25,12 @@ font-family: 'arial';
 		<div class="row">
 
 			<div class="col-md-3">
-				<a href="<c:url value="/home"/>"><img class="img-fluid logo"
-					src="${logoImgURL}"></a>
+				<a href="<c:url value="/home"/>"><img class="img-fluid logo" src="${logoImgURL}"></a>
 			</div>
 
 			<div class="col-md-9 parkDetail">
-
-				<c:url var="surveyUrl" value="/survey/save" />
-				<form:form id="submitSurvey" action="${surveyUrl}" method="POST"
-					modelAttribute="parkSurvey">
+			${sessionScope.isSurveyPosted }
+				<form:form id="submitSurvey" action="${surveySubmitURL}" method="POST" modelAttribute="parkSurvey">
 					<div class="row">
 						<div class="form-group">
 							<label for="favoriteParkCode"><strong>Favorite
@@ -141,20 +127,14 @@ font-family: 'arial';
 						</div>
 						<div class="form-group submit">
 							<div>
-								<input type="hidden" name="pageURL" value="${pageURL}">
 								<input type="submit" value="Submit Survey"
 									class="btn btn-dark submitButton float-right">
 							</div>
 						</div>
 					</div>
-					<div>
-
-
-						<input type="hidden" name="pageURL" value="${param.pageURL}">
-
-					</div>
-
 				</form:form>
+			<%-- </c:if> --%>
+				
 			</div>
 		</div>
 	</header>

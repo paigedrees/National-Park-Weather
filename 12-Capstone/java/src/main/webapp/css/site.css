@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica');
+
 /* Background Colors and Images */
 html {
 	margin: 50px;
@@ -10,6 +12,8 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+
+	font-family: 'IM Fell DW Pica', serif;
 }
 
 .parkDetail {
@@ -83,4 +87,16 @@ img {
 
 .form-control {
 	background-color: rgba(255,255,255,.65);
+}
+
+button {
+	background:none!important;
+	border:none; 
+	padding:0!important;
+	
+	/*optional*/
+	/* font-family:arial,sans-serif; input has OS specific font-family */
+	color:#069;
+	text-decoration:underline;
+	cursor:pointer;
 }

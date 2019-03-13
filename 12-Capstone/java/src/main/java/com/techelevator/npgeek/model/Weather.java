@@ -1,3 +1,4 @@
+
 package com.techelevator.npgeek.model;
 import java.time.LocalDateTime;
 import java.time.format.TextStyle;
@@ -14,10 +15,8 @@ public class Weather {
 	private int lowTempF;
 	private int highTempF;
 	private String forecast;
-	//private static final DateFormatSymbols dayNames= new DateFormatSymbols();
 	
 	public String getDayName() {
-		
 		return LocalDateTime.now().plusDays(day - 1).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ROOT);
 	}
 	
@@ -33,8 +32,8 @@ public class Weather {
 			break;
 			
 		case "thunderstorms":
-			warnings.add("Seek shelter");
-			warnings.add("Avoid hiking on exposed ridges");
+			warnings.add("seek shelter");
+			warnings.add("avoid hiking on exposed ridges");
 			//Fall through
 			
 		case "rain":
@@ -49,13 +48,13 @@ public class Weather {
 		
 		
 		if (highTempF > 75) {
-			toPack.add("Extra gallon of Water");
+			toPack.add("extra gallon of water");
 		}
 		if ( (highTempF - lowTempF) > 20) {
 			toWear.add("breathable layers");
 		}
 		if ( lowTempF < 20) {
-			warnings.add("Danger of exposure to frigid temperatures");
+			warnings.add("danger of exposure to frigid temperatures");
 		}
 		
 		StringBuffer result = new StringBuffer();
