@@ -1,16 +1,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>National Park Geek</title>
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+crossorigin="anonymous">
 <link rel="stylesheet" href="css/site.css">
 </head>
 
@@ -20,32 +19,35 @@
 		<div class="row">
 
 			<div class="col-md-3">
-				<a href="<c:url value="/home"/>"><img class="img-fluid logo" src="css/CircleParkLogo.png"></a>
+				<a href="<c:url value="/home"/>"><img class="img-fluid logo"
+					src="css/CircleParkLogo.png"></a>
 			</div>
 
 			<div class="col-md-9 parkDetail">
-			<c:url var="surveyUrl" value="/survey/save" />
-			<form:form id="submitSurvey" action="${surveyUrl}" method="POST" modelAttribute="parkSurvey">
+				<c:url var="surveyUrl" value="/survey/save" />
+				<form:form id="submitSurvey" action="${surveyUrl}" method="POST"
+					modelAttribute="parkSurvey">
 
-				<div>
-						<label for="favoriteParkCode"><strong>Favorite Park</strong></label>
-						<select id="favoriteParkCode" name="favoriteParkCode">
+					<div>
+						<label for="favoriteParkCode"><strong>Favorite
+								Park</strong></label> <select id="favoriteParkCode" name="favoriteParkCode">
 							<c:forEach var="park" items="${parks}">
 								<option value="${park.code}">${park.name}</option>
 							</c:forEach>
 						</select>
-				</div>
+					</div>
 
-				<div>
-				<h3>${pageURL }</h3>
-						<label for="email"><strong>Email</strong></label>
+					<div>
+						<%-- <h3>${pageURL }</h3> --%>
+						<input type="hidden" value="${pageURL}"> <label
+							for="email"><strong>Email</strong></label>
 						<form:input path="email" placeholder="enter email" />
 						<form:errors path="email" class="error" />
-				</div>
+					</div>
 
-				<div>
-						<label for="stateOfResidence"><strong>State of Residence</strong></label>
-						<select id="stateOfResidence" name="stateOfResidence">
+					<div>
+						<label for="stateOfResidence"><strong>State of
+								Residence</strong></label> <select id="stateOfResidence" name="stateOfResidence">
 							<option value="AL">Alabama</option>
 							<option value="AK">Alaska</option>
 							<option value="AZ">Arizona</option>
@@ -98,22 +100,24 @@
 							<option value="WI">Wisconsin</option>
 							<option value="WY">Wyoming</option>
 							<option value="NOTINUS">Outside the U.S.</option>
-							</select>
-				</div>
+						</select>
+					</div>
 
-				<div>
-						<label for="physicalActivityLevel"><strong>Physical Activity Level</strong></label>
-						<select id="physicalActivityLevel" name="physicalActivityLevel">
+					<div>
+						<label for="physicalActivityLevel"><strong>Physical
+								Activity Level</strong></label> <select id="physicalActivityLevel"
+							name="physicalActivityLevel">
 							<option value="inactive">Inactive</option>
 							<option value="sedentary">Sedentary</option>
 							<option value="active">Active</option>
 							<option value="extremely active">Extremely Active</option>
 						</select>
-				</div>
-				
-				<input type="hidden" name="pageURL" value="${param.pageURL}">
-				<input type="submit" value="Submit Survey" class="btn btn-dark submitButton float-right">
-			</form:form>
+					</div>
+
+					<input type="hidden" name="pageURL" value="${param.pageURL}">
+					<input type="submit" value="Submit Survey"
+						class="btn btn-dark submitButton float-right">
+				</form:form>
 			</div>
 		</div>
 	</header>
