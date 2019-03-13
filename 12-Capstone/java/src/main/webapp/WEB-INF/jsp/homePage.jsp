@@ -1,13 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:import url="header.jsp">
-	<c:param name="pageURL" value="${pageURL}"/>
-</c:import>
+<c:url var="parkImgURL" value="/img/parks/${park.code.toLowerCase()}.jpg" />
+
+<c:import url="header.jsp" />
 
 	<div class="container">
 	
 		<c:forEach var="park" items="${parks}">
-		<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg"/>
+		<c:url var="imgPark" value="${parkImgURL}"/>
 		<div class="row parkDetail">
 		
 			<div class="col-md-6">
@@ -28,5 +28,4 @@
 	</div>
 	
 <c:import url="footer.jsp" />
-	
 	
