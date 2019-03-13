@@ -28,9 +28,9 @@
 
 			<div class="col-md-9 parkDetail">
 			<c:url var="surveyUrl" value="/survey/save" />
-			<form:form id="submitSurvey" action="${surveyUrl}" method="POST" modelAttribute="parkSurvey">
-
-				<div>
+			<form:form class="form-inline" id="submitSurvey" action="${surveyUrl}" method="POST" modelAttribute="parkSurvey">
+				<div class="row">
+				<div class="form-group">
 						<label for="favoriteParkCode"><strong>Favorite Park</strong></label>
 						<select id="favoriteParkCode" name="favoriteParkCode">
 							<c:forEach var="park" items="${parks}">
@@ -39,7 +39,7 @@
 						</select>
 				</div>
 
-				<div>
+				<div class="form-group">
 <%-- 				<h3>${pageURL }</h3> --%>
 						<input type="hidden" value="${pageURL}" >
 						<label for="email"><strong>Email</strong></label>
@@ -48,6 +48,7 @@
 				</div>
 
 				<div>
+				</div>
 						<label for="stateOfResidence"><strong>State of Residence</strong></label>
 						<select id="stateOfResidence" name="stateOfResidence">
 							<option value="AL">Alabama</option>
