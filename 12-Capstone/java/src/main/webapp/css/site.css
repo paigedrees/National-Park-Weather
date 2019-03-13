@@ -84,3 +84,7 @@ img {
 .form-control {
 	background-color: rgba(255,255,255,.65);
 }
+
+.parkImage {
+	padding-left: 0px;
+}
