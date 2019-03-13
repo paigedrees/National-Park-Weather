@@ -45,6 +45,7 @@ public class ParkController {
 	public String getPageResult(
 			ModelMap pageData
 			){
+		//TODO - BM make getMostPopularParkCodes() return a park and a park count
 		List<SurveyResult> parksInSurvey = new ArrayList<SurveyResult>();
 		List<String> keys = new ArrayList<>(surveyDao.getMostPopularParkCodes().keySet());
 		

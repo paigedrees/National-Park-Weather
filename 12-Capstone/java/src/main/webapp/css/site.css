@@ -1,5 +1,4 @@
 /* Nav */
-
 nav ul li {
 	list-style: none;
 	margin-right: 20px;
@@ -13,21 +12,18 @@ nav {
 }
 
 /* Layout Formatting */
-
-
 html {
-	background-image: url("RockyMountainNationalPark.jpg");
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
 	margin: 50px;
 	height: 100%;
 	
 }
 
 body {
-	background-color: transparent;
+	background-image: url("bg.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .parkDetail {

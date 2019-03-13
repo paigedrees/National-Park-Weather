@@ -2,8 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<c:url var="surveySubmitURL" value="/survey/save" />
 <c:url var="homePageURL" value="/home"/>
-<c:url var="logo" value="css/CircleParkLogo.png" />
+<c:url var="logoImgURL" value="/img/logo.png" />
+<c:url var="cssURL" value="/css/site.css" />
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="${cssURL}">
 </head>
 
 <body>
@@ -23,12 +25,11 @@
 		<div class="row">
 
 			<div class="col-md-3">
-				<a href="<c:url value="/home"/>"><img class="img-fluid logo" src="${logo}"></a>
+				<a href="<c:url value="/home"/>"><img class="img-fluid logo" src="${logoImgURL}"></a>
 			</div>
 
 			<div class="col-md-9 parkDetail">
-			<c:url var="surveyUrl" value="/survey/save" />
-			<form:form id="submitSurvey" action="${surveyUrl}" method="POST" modelAttribute="parkSurvey">
+			<form:form id="submitSurvey" action="${surveySubmitURL}" method="POST" modelAttribute="parkSurvey">
 
 				<div>
 						<label for="favoriteParkCode"><strong>Favorite Park</strong></label>
@@ -40,7 +41,6 @@
 				</div>
 
 				<div>
-<%-- 				<h3>${pageURL }</h3> --%>
 						<input type="hidden" value="${pageURL}" >
 						<label for="email"><strong>Email</strong></label>
 						<form:input path="email" placeholder="enter email" />
@@ -115,7 +115,7 @@
 						</select>
 				</div>
 				
-				<input type="hidden" name="pageURL" value="${param.pageURL}">
+				<input type="hidden" name="pageURL" value="${pageURL}">
 				<input type="submit" value="Submit Survey" class="btn btn-dark submitButton float-right">
 			</form:form>
 			</div>
