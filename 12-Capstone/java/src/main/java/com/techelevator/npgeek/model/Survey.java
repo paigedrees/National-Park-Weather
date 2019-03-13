@@ -4,7 +4,16 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 public class Survey {
+	private String pageURL;
+	public String getPageURL() {
+		return pageURL;
+	}
 
+	public void setPageURL(String pageURL) {
+		this.pageURL = pageURL;
+	}
+	
+	
 	private long surveyId;
 	private String favoriteParkCode;
 	
@@ -18,6 +27,7 @@ public class Survey {
 	
 	private String physicalActivityLevel;
 	
+
 	public String getFavoriteParkCode() {
 		return favoriteParkCode;
 	}
@@ -57,6 +67,7 @@ public class Survey {
 	public void setSurveyId(long surveyId) {
 		this.surveyId = surveyId;
 	}
+
 	
 	
 }

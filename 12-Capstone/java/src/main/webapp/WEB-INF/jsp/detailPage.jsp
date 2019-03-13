@@ -1,27 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:import url="/WEB-INF/jsp/header.jsp" />
+<c:import url="header.jsp"/>
 
 <div class="container parkDetail">
 
 	<c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg" />
-
-	<div class="row align-items-center">
-
-		<div class="col-md-6">
-
-			<img class="img-fluid" src="${imgPark}" />
-
-		</div>
-		
-		<div class="col-md-6">
-
-			<h4 class="font-italic">"${park.inspirationalQuote}"</h4>
-			<h4>- ${park.quoteSource}</h4>
-
-		</div>
-
-	</div>
 
 	<div class="row p-4">
 
@@ -33,8 +16,22 @@
 
 	</div>
 
+	<div class="row align-items-center">
 
-	<div class="row form-group">
+		<div class="col-md-6">
+
+			<img class="img-fluid" src="${imgPark}" />
+
+		</div>
+		
+		<div class="col-md-6">
+			<h4 class="font-italic">"${park.inspirationalQuote}"</h4>
+			<h4>- ${park.quoteSource}</h4>
+		</div>
+
+	</div>
+
+	<div class="row">
 
 		<div class="col-md">
 
