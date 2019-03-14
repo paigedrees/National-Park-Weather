@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Merriweather:400,600,700');
+
+/* Background Colors and Images */
+html {
+	margin: 50px;
+	height: 100%;
+}
+
+body {
+	background-image: url("../img/bg.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	line-height: 1.5;
+	font-size: 14pt;
+	font-family: 'Lato', sans-serif;
+	color: #EEE; 
+}
+h1, h2, h3, h4 {
+	font-family: 'Merriweather', serif;
+	text-shadow:
+		-2px -1px 0 #000,
+		 2px -1px 0 #000,
+		-2px 1px 0 #000,
+		 2px 1px 0 #000;
+}
+
+.parkDetail {
+	background-color: rgba(20, 20, 20, .4);
+	margin-bottom: 20px;
+	padding: 20px;
+	border-radius: 10px;
+}
+.parkText {
+	background-color: rgba(0, 40, 0, .3);
+	color: #EEE;
+}
+.parkTextShadow {
+	text-shadow:
+		-2px -1px 0 #000,
+		 2px -1px 0 #000,
+		-2px 1px 0 #000,
+		 2px 1px 0 #000;
+}
+/* Layout Formatting */
+#allParks {
+	display: flex;
+	flex-direction: column;
+}
+
+#park {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.submit {
+	margin-left: 40%;
+}
+
+.formMargin {
+	margin-left: 10px;
+}
+
+/* Images */
+.parkDetail img, .card img {
+	border: 2px solid white;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0
+		rgba(0, 0, 0, 0.35);
+}
+
+.card {
+	padding: 20px;
+	margin-bottom: 15px;
+	background-color: rgba(20, 20, 20, .5);
+	/* border-radius: 10px; */
+	text-align: center;
+	height: 410px;
+}
+
+.resultsRow {
+	text-align: center;
+}
+
+.btnResult {
+	position: absolute;
+	bottom: 18px;
+	left: 115px;
+	right: 115px;
+	margin: auto
+}
+
+.votesResult {
+	position: absolute;
+	bottom: 64px;
+	left: 115px;
+	right: 115px;
+	margin: auto
+	
+}
+
+#favoriteParkCode {
+	background-color: rgba(255,255,255,.65);
+}
+
+.form-control {
+	background-color: rgba(255,255,255,.65);
+}
+
+.parkImage {
+	padding-left: 0px;
+}

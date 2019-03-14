@@ -17,8 +17,8 @@
 				<img class="card-img-top" src="${imgPark}" alt="Card image cap">
 				
 				<div class="card-body">
-					<h5 class="card-title"><strong>${surveyResult.park.name}</strong></h5>
-					<h6 class="card-text votesResult" style="color:#2E86C1  ;"><strong>${surveyResult.surveyCount} votes!</strong></h6>
+					<h5 class="card-title">${surveyResult.park.name}</h5>
+					<h6 class="card-text votesResult">${surveyResult.surveyCount} votes!</h6>
 					<c:url var="detail" value="/detail?parkCode=${surveyResult.park.code}"/>
 					<a href="${detail}" class="btn btn-dark btnResult">View this Park</a>
 				</div>

@@ -28,6 +28,7 @@ function slide_in(slide) {
   
   var _this = slide;
   
+  _this.css( 'display', 'block' );
   animation_in(slide);
   _this.addClass('active');
   TweenMax.to(_this, 1, {autoAlpha:1}, '-=1');
@@ -40,6 +41,7 @@ function slide_out(slide){
   
   _this.css( 'z-index', '2' );
   _this.removeClass('active');
+  _this.css( 'display', 'none' );
   TweenMax.to(_this, 1, {autoAlpha:0, onComplete: removeZ});
   
   function removeZ(){
@@ -73,8 +75,9 @@ $('.slide-navigation__txt span').on('click', function(){
 
 $(document).ready(function() {
   
-  initialSlide.addClass('active');
   initalSelected.addClass('active');
+  activate_slide(1);
+
   TweenMax.to(initialSlide, 0.5, {autoAlpha:1});
   
 });
