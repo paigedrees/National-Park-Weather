@@ -6,48 +6,46 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/box-slider.css">
         <style>
-.slide-navigation__txt {
-  position: relative;
-  display: block;
-  height: 100%;
-}
-.slide-navigation__txt ul {
-  margin: 3em 0 0 1em;
-  list-style: none;
-  padding: 0;
-  width: 24rem;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-  -webkit-transform-origin: 0;
-          transform-origin: 0;
-  /* margin-left: calc(50% - 0.14rem); */
-}
-.slide-navigation__txt ul::after {
-  content: "";
-  clear: both;
-} 
-.slide-navigation__txt li { 
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  margin: 0 1rem;
-  position: relative;
-  float: left;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--gray-dark);
-} 
-.slide-navigation__txt li span {
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  display: block;
-}
-.slide-navigation__txt li span.active {
-  -webkit-transform: scale(1.1, 1.1);
-          transform: scale(1.1, 1.1);
-  color: #E34D67;
-} 
-
+            .slide-navigation__txt {
+            position: relative;
+            display: block;
+            height: 100%;
+            }
+            .slide-navigation__txt ul {
+            margin: 3em 0 0 1em;
+            list-style: none;
+            padding: 0;
+            width: 24rem;
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+            -webkit-transform-origin: 0;
+            transform-origin: 0;
+            }
+            .slide-navigation__txt ul::after {
+            content: "";
+            clear: both;
+            } 
+            .slide-navigation__txt li { 
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            margin: 0 1rem;
+            position: relative;
+            float: left;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-dark);
+            } 
+            .slide-navigation__txt li span {
+            cursor: pointer;
+            -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            display: block;
+            }
+            .slide-navigation__txt li span.active {
+            -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+            color: #E34D67;
+            } 
         </style>
     </head>
     <body>
@@ -55,32 +53,36 @@
             <div class="row p-0 m-0">
                 <div class="col-sm-4  p-0">
                     <div class="row">
-                        <div class="col-sm-11 p-0 align-top text-center weather-box">
-                            <p class="header">Thursday, August 30</p>
-                            <p class="forecast">
-                                Forecast: snow
-                            </p>
-                            <p class="climate">
-                                Climate Rainforest
-                            </p>
-                            <p class="temperature-high">
-                                31 <sup>o</sup>C
-                            </p>
-                            <p class="temperature-low">
-                                10 <sup>o</sup>C
-                            </p>
-                            <img class="img-fluid mx-auto d-block" src="img/weather/snow.png">
+                        <div class="col-sm-10 p-0 align-top text-center slides-container">
+                            
+                                <div class="slide" data-order="1">
+                                    <p class="header">Thursday, August 30</p>
+                                    <p class="forecast">
+                                        Forecast: snow
+                                    </p>
+                                    <p class="climate">
+                                        Climate Rainforest
+                                    </p>
+                                    <p class="temperature-high">
+                                        31 <sup>o</sup>C
+                                    </p>
+                                    <p class="temperature-low">
+                                        10 <sup>o</sup>C
+                                    </p>
+                                    <img class="img-fluid mx-auto d-block" src="img/weather/snow.png">
+                                </div>
+                        
                         </div>
-                        <div class="col-sm-1">
-                                <div class="slide-navigation__txt">
-                                        <ul>
-                                          <li><span data-order="1">Mon</span></li>
-                                          <li><span data-order="2">Tue</span></li>
-                                          <li><span data-order="3">Wed</span></li>
-                                          <li><span data-order="4">Thu</span></li>
-                                          <li><span data-order="5">Fri</span></li>
-                                        </ul>
-                                      </div>
+                        <div class="col-sm-2">
+                            <div class="slide-navigation__txt">
+                                <ul>
+                                    <li><span data-order="1">Mon</span></li>
+                                    <li><span data-order="2">Tue</span></li>
+                                    <li><span data-order="3">Wed</span></li>
+                                    <li><span data-order="4">Thu</span></li>
+                                    <li><span data-order="5">Fri</span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

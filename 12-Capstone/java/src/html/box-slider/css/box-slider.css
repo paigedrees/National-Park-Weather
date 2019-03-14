@@ -16,12 +16,12 @@ body{
 .climate {
 	font-size: 0.8em; color: var(--gray);
 }
-.weather-box {
+.slides-container {
 	border-radius: 10px;
 	background: #FFF;
 	box-shadow:1px 0px 10px #2f2f2f;
 }
-.weather-box .header {
+.slides-container .header {
 	background: rgba(0, 0, 0, 0.1);
 	padding: 1em;
 	text-align: center;
