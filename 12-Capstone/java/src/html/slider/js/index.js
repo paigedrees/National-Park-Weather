@@ -50,43 +50,13 @@ function slide_out(slide){
 }
 
 function animation_in(slide){
-  
-  var title = slide.find('h1');
-  var subtitle = $(slide).find('h2');
-  var text = $(slide).find('p');
-  var button = $(slide).find('button');
-  var image = $(slide).find('img');
-
-
   var weather = $(slide).find('.slide-content');
-  
-  // TweenMax.fromTo(weather, 0.6,{autoAlpha:0, x:100}, {autoAlpha:0.6, x:0, ease: Power2.easeOut});
-  // TweenMax.fromTo(weather, 0.5,{autoAlpha:0, x:-200}, {autoAlpha:1, x:0, ease: Power2.easeOut},'-0.1');
-  // TweenMax.fromTo(weather, 0.8,{autoAlpha:0, x:50}, {autoAlpha:1, x:0, ease: Power2.easeOut});
-  TweenMax.to(weather, 0, {autoAlpha:1,scale:1});
-  
-  
-  TweenMax.fromTo(title, 0.6,{autoAlpha:0, x:100}, {autoAlpha:0.6, x:0, ease: Power2.easeOut});
-  TweenMax.fromTo(subtitle, 0.5,{autoAlpha:0, x:-200}, {autoAlpha:1, x:0, ease: Power2.easeOut},'-0.1');
-  TweenMax.fromTo(text, 0.8,{autoAlpha:0, x:50}, {autoAlpha:1, x:0, ease: Power2.easeOut});
-  TweenMax.fromTo(button, 0.5,{autoAlpha:0 }, {autoAlpha:1});
-  TweenMax.to(image, 0, {autoAlpha:1,scale:1});
+  TweenMax.fromTo(weather, 0.5,{autoAlpha:0, x:-200}, {autoAlpha:1, x:0, ease: Power2.easeOut},'-0.2');
 }
 
 function animation_out(slide){
-  
-  var title = slide.find('h1');
-  var subtitle = $(slide).find('h2');
-  var text = $(slide).find('p');
-  var button = $(slide).find('button');
-  var image = $(slide).find('img');
-  
-  TweenMax.to(title, 0.6, {autoAlpha:0, x:0});
+  var weather = $(slide).find('.slide-content');
   TweenMax.to(subtitle, 0.5, {autoAlpha:0, x:200});
-  TweenMax.to(text, 0.5,{autoAlpha:0});
-  TweenMax.to(button, 0.5,{autoAlpha:0});
-  TweenMax.to(image, 1, {scale:1.1});
-  
 }
 
 $('.slide-navigation__txt span').on('click', function(){
@@ -99,30 +69,7 @@ $('.slide-navigation__txt span').on('click', function(){
   spans.removeClass('active');
   _this.addClass('active');
   activate_slide(order); 
-  stagger_squares(order, current);
 });
-
-function stagger_squares(order, current) {
-  var mq = 0.7;
-  var moveY;
-  var squares = $('.slide-navigation__squares .square');
-  var staggerTime = -0.12;
-  
-  if( order < current ) {
-    staggerTime = staggerTime * -1; 
-  }
-  
-  if( mq_medium.matches) { mq = 1 }
-  if( mq_big.matches) { mq = 1.3 }
-  
-    
-  
-  moveY = (order-1) * (15 * mq );
-  TweenMax.staggerTo(squares, 0.1, {y: moveY}, staggerTime);
-  
-}
-
-
 
 $(document).ready(function() {
   
