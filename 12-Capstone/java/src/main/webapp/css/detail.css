@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,700');
+.temperature-high {
+font-size: 2em; color: var(--cyan);
+margin-bottom: 0.3rem;
+}
+.temperature-low {
+font-size: 1.5em; color: var(--gray-dark);
+margin-bottom: 0;
+}
+.climate {
+font-size: 0.8em; color: var(--gray);
+}
+.slides-container {
+border-radius: 10px;
+background: #FFF;
+box-shadow:1px 0px 10px #2f2f2f;
+font-family: 'Rubik', sans-serif;
+}
+.slides-container .header {
+background: rgba(0, 0, 0, 0.1);
+padding: 1em;
+text-align: center;
+font-weight: 700;
+}
+.slide-navigation__txt {
+position: relative;
+display: block;
+height: 100%;
+font-family: 'Rubik', sans-serif;
+}
+.slide-navigation__txt ul {
+margin: 3em 0 0 1em;
+list-style: none;
+padding: 0;
+width: 24rem;
+-webkit-transform: rotate(90deg);
+transform: rotate(90deg);
+-webkit-transform-origin: 0;
+transform-origin: 0;
+}
+.slide-navigation__txt ul::after {
+content: "";
+clear: both;
+} 
+.slide-navigation__txt li { 
+text-transform: uppercase;
+letter-spacing: 0.2rem;
+margin: 0 1rem;
+position: relative;
+float: left;
+font-size: 1rem;
+font-weight: 700;
+color: var(--gray-dark);
+} 
+.slide-navigation__txt li span {
+cursor: pointer;
+-webkit-transition: all 0.5s ease;
+transition: all 0.5s ease;
+display: block;
+}
+.slide-navigation__txt li span.active {
+-webkit-transform: scale(1.1, 1.1);
+transform: scale(1.1, 1.1);
+color: #E34D67;
+} 
+.slide {
+opacity: 0;
+display: none;
+z-index: 2;
+}
+.slide img {
+	border: none;
+	box-shadow: none;
+}

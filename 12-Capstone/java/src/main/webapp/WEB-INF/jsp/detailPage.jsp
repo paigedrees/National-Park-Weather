@@ -4,7 +4,13 @@
 <c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg" />
 <c:url var="temperatureSubmitURL" value="/temperature/flipScale" />
 
-<c:import url="header.jsp" />
+<c:import url="header.jsp">
+	<c:param name="cssPageURL" value="/css/detail.css"/>
+</c:import>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/box-slider.css">
+
 
 <div class="container parkDetail">
 
@@ -34,7 +40,7 @@
 
 	</div>
 
-	<div class="row pt-4">
+	<div class="row pt-5">
 
 		<div class="col-md">
 
@@ -46,7 +52,7 @@
 
 	<div class="row pb-5">
 
-		<div class="col-md-4 col-sm">
+		<div class="col-md-4">
 			<p>
 				<span class="font-weight-bold">State:</span> ${park.state}
 			</p>
@@ -65,7 +71,7 @@
 			</p>
 		</div>
 
-		<div class="col-md-4 col-sm">
+		<div class="col-md-4">
 			<p>
 				<span class="font-weight-bold">Acreage:</span>
 				<fmt:formatNumber value="${park.acreage}" type="number" />
@@ -81,7 +87,7 @@
 			</p>
 		</div>
 
-		<div class="col-md-4 col-sm">
+		<div class="col-md-4">
 			<p>
 				<span class="font-weight-bold">Climate:</span> ${park.climate}
 			</p>
@@ -97,6 +103,66 @@
 		</div>
 
 	</div>
+	
+    <div class="row">
+        <div class="col-md">
+            <div class="row p-0 m-0">
+                <div class="col-sm-4  p-0">
+                    <div class="row">
+                        <div class="col-sm-10 p-0 align-top text-center slides-container">
+                            <div class="slide" data-order="1">
+                                <p class="header">Thursday, August 30</p>
+                                <p class="forecast">
+                                    Forecast: snow
+                                </p>
+                                <p class="climate">
+                                    Climate Rainforest
+                                </p>
+                                <p class="temperature-high">
+                                    31 <sup>o</sup>C
+                                </p>
+                                <p class="temperature-low">
+                                    10 <sup>o</sup>C
+                                </p>
+                                <img class="img-fluid mx-auto d-block" src="img/weather/snow.png">
+                            </div>
+                            <div class="slide" data-order="2">
+                                <p class="header">Wednesday, August 30</p>
+                                <p class="forecast">
+                                    Forecast: Sunny
+                                </p>
+                                <p class="climate">
+                                    Climate Desert
+                                </p>
+                                <p class="temperature-high">
+                                    100 <sup>o</sup>C
+                                </p>
+                                <p class="temperature-low">
+                                    10 <sup>o</sup>C
+                                </p>
+                                <img class="img-fluid mx-auto d-block" src="img/weather/sunny.png">
+                                <p>${weather.getRecommendation()}</p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="slide-navigation__txt">
+                                <ul>
+                                    <li><span data-order="1">Mon</span></li>
+                                    <li><span data-order="2">Tue</span></li>
+                                    <li><span data-order="3">Wed</span></li>
+                                    <li><span data-order="4">Thu</span></li>
+                                    <li><span data-order="5">Fri</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
 
 	<div class="row form-group">
 		<!-- === Temperature Scale === -->
@@ -132,8 +198,16 @@
 
 		</c:forEach>
 	</div>
-
-
 </div>
+
+<c:url var="queryURL" value="/js/jquery-3.1.0-min.js" />
+<script src="${queryURL}"></script>
+
+<c:url var="queryURL" value="/js/TweenMax-1.19.0-min.js" />
+<script src="${queryURL}"></script>
+
+<c:url var="queryURL" value="/js/index.js" />
+<script src="${queryURL}"></script>
+
 
 <c:import url="footer.jsp" />

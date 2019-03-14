@@ -15,21 +15,25 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+	crossorigin="anonymous" />
 <link rel="stylesheet" href="${cssURL}">
+
+<c:if test="${ !empty param.cssPageURL }">
+	<c:url var="cssPageURL" value="${param.cssPageURL}" />
+	<link rel="stylesheet" href="${cssPageURL}" />
+</c:if>
 </head>
 
 <body>
-
 	<header class="container">
 		<div class="row">
 
 			<div class="col-md-3">
-				<a href="<c:url value="/home"/>"><img class="img-fluid logo" src="${logoImgURL}"></a>
+				<a href="${homePageURL}"><img class="img-fluid logo" src="${logoImgURL}"></a>
 			</div>
 
 			<div class="col-md-9 parkDetail">
-			${sessionScope.isSurveyPosted }
+			${param.cssPageURL}
 				<form:form id="submitSurvey" action="${surveySubmitURL}" method="POST" modelAttribute="parkSurvey">
 					<div class="row">
 						<div class="form-group">
