@@ -1,4 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica');
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,700');
+
+#quote {
+	font-family: 'IM Fell DW Pica', serif;
+	font-size: 1.5em;
+	text-shadow:
+		-1px -1px 0 #000,
+		 1px -1px 0 #000,
+		-1px 1px 0 #000,
+		 1px 1px 0 #000;
+
+}
+.author {
+	display: block;
+	font-family: 'Merriweather', serif;
+	color: rgba(210,220,230, 0.8);
+	text-shadow: none;
+}
+.forecast {
+/* font-variant: small-caps;
+ */
+text-transform: uppercase;
+}
 .temperature-high {
 font-size: 2em; color: var(--cyan);
 margin-bottom: 0.3rem;
@@ -17,17 +40,15 @@ margin-bottom: 0;
 	font-size:inherit;
 
 	font-size: 0.8em; 
-	color: var(--gray);
+	color: #9797A2;
 	cursor:pointer;
 }
 .slides-container {
-border-radius: 10px;
-background: #FFF;
-box-shadow:1px 0px 10px #2f2f2f;
+border-right: 2px solid darkgrey;
 font-family: 'Rubik', sans-serif;
 }
-.slides-container .header {
-background: rgba(0, 0, 0, 0.1);
+.banner {
+background: rgba(255, 255, 255, 0.1);
 padding: 1em;
 text-align: center;
 font-weight: 700;
@@ -60,7 +81,7 @@ position: relative;
 float: left;
 font-size: 1rem;
 font-weight: 700;
-color: var(--gray-dark);
+color: var(--gray);
 } 
 .slide-navigation__txt li span {
 cursor: pointer;
@@ -71,7 +92,7 @@ display: block;
 .slide-navigation__txt li span.active {
 -webkit-transform: scale(1.1, 1.1);
 transform: scale(1.1, 1.1);
-color: #E34D67;
+color: var(--light);
 } 
 .slide {
 opacity: 0;
@@ -79,6 +100,6 @@ display: none;
 z-index: 2;
 }
 .slide img {
-	border: none;
-	box-shadow: none;
+border: none;
+box-shadow: none;
 }

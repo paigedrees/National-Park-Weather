@@ -5,6 +5,7 @@
 <c:url var="surveySubmitURL" value="/survey/save" />
 <c:url var="homePageURL" value="/home" />
 <c:url var="logoImgURL" value="/img/logo.png" />
+<c:url var="iconImgURL" value="/img/favicon.ico" />
 <c:url var="cssURL" value="/css/site.css" />
 
 <!DOCTYPE html>
@@ -12,6 +13,8 @@
 <head>
 <meta charset="UTF-8">
 <title>National Park Geek</title>
+
+<link rel="shortcut icon" href="${iconImgURL}" /> 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -33,7 +36,6 @@
 			</div>
 
 			<div class="col-md-9 parkDetail">
-			${param.cssPageURL}
 				<form:form id="submitSurvey" action="${surveySubmitURL}" method="POST" modelAttribute="parkSurvey">
 					<div class="row">
 						<div class="form-group">

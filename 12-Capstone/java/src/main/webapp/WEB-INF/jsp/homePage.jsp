@@ -11,12 +11,12 @@
 		<c:url var="parkDetailURL" value="/detail?parkCode=${park.code}" />
 
 		<div class="row parkDetail">
-			<div class="col-md-6">
+			<div class="col-md-6 parkImage">
 				<a href="${parkDetailURL}"><img class="img-fluid"
 					src="${parkImgURL}" /></a>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-6 parkTextShadow">
 				<h3>${park.name}</h3>
 				<p>${park.description}</p>
 			</div>

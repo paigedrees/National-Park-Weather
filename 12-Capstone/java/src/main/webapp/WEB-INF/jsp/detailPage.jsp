@@ -35,13 +35,15 @@
 		</div>
 
 		<div class="col-md-6">
-			<p class="font-italic font-weight-bold">&ldquo;${park.inspirationalQuote}&rdquo;</p>
-			<h4>- ${park.quoteSource}</h4>
+			<p id="quote">&ldquo;${park.inspirationalQuote}&rdquo;
+			<span class="author">- ${park.quoteSource}</span>
+			</p>
+			
 		</div>
 
 	</div>
 
-	<div class="row pt-5">
+	<div class="row mt-5 parkText">
 
 		<div class="col-md">
 
@@ -51,70 +53,17 @@
 
 	</div>
 
-	<div class="row pb-5">
+	<div class="row parkText">
 
 		<div class="col-md-4">
-			<p>
-				<span class="font-weight-bold">State:</span> ${park.state}
-			</p>
-			<p>
-				<span class="font-weight-bold">Year Founded:</span>
-				${park.yearFounded}
-			</p>
-			<p>
-				<span class="font-weight-bold">Annual Visitor Count:</span>
-				<fmt:formatNumber value="${park.annualVisitorCount}" type="number" />
-			</p>
-			<p class="font-weight-bold">
-				Fee:
-				<fmt:setLocale value="en_US" />
-				<fmt:formatNumber value="${park.entryFee}" type="currency" />
-			</p>
-		</div>
-
-		<div class="col-md-4">
-			<p>
-				<span class="font-weight-bold">Acreage:</span>
-				<fmt:formatNumber value="${park.acreage}" type="number" />
-				acres
-			</p>
-			<p>
-				<span class="font-weight-bold">Elevation:</span>
-				${park.elevationInFeet} ft.
-			</p>
-			<p>
-				<span class="font-weight-bold">Miles of Trail:</span>
-				${park.milesOfTrail} miles
-			</p>
-		</div>
-
-		<div class="col-md-4">
-			<p>
-				<span class="font-weight-bold">Climate:</span> ${park.climate}
-			</p>
-			<p>
-				<span class="font-weight-bold">Number of Campsites:</span>
-				<fmt:formatNumber value="${park.numberOfCampsites}" type="number" />
-			</p>
-			<p>
-				<span class="font-weight-bold">Number of Animal Species:</span>
-				<fmt:formatNumber value="${park.numberOfAnimalSpecies}"
-					type="number" />
-			</p>
-		</div>
-
-	</div>
-	
-    <div class="row">
-        <div class="col-md">
-            <div class="row p-0 m-0">
-                <div class="col-sm-4  p-0">
+                    <!-- Begin Weather Report -->
+                
                     <div class="row">
-                        <div class="col-sm-10 p-0 align-top text-center slides-container">
+                        <div class="col-sm-10 align-top pr-0 text-center slides-container">
 
 <c:forEach var="weather" items="${weatherForecast}" varStatus="countObject">
                             <div class="slide" data-order="${countObject.index + 1}">
-                                <p class="header"><fmt:formatDate pattern = "EEEE, MMM dd" value = "${weather.date}" /></p>
+                                <h4 class="banner"><fmt:formatDate pattern = "EEEE, MMM dd" value = "${weather.date}" /></h4>
                                 
                                 <p class="forecast">
                                     ${weather.forecast}
@@ -193,6 +142,62 @@
                             </div>
                         </div>
                     </div>
+                    <!-- End Weather Report -->
+		</div>
+		<div class="col-md-4">
+			<p>
+				Fee:
+				<fmt:setLocale value="en_US" />
+				<fmt:formatNumber value="${park.entryFee}" type="currency" />
+			</p>
+		
+			<p>
+				State: ${park.state}
+			</p>
+			<p>
+				Year Founded: ${park.yearFounded}
+			</p>
+			<p>
+				Number of Campsites:
+				<fmt:formatNumber value="${park.numberOfCampsites}" type="number" />
+			</p>
+			<p>
+				Annual Visitor Count:
+				<fmt:formatNumber value="${park.annualVisitorCount}" type="number" />
+			</p>
+		</div>
+
+		<div class="col-md-4">
+			<p>
+				Acreage:
+				<fmt:formatNumber value="${park.acreage}" type="number" />
+				acres
+			</p>
+			<p>
+				Elevation:
+				${park.elevationInFeet} ft.
+			</p>
+			<p>
+				Climate: ${park.climate}
+			</p>
+			<p>
+				Miles of Trail: ${park.milesOfTrail} miles
+			</p>
+			<p>
+				Number of Animal Species:
+				<fmt:formatNumber value="${park.numberOfAnimalSpecies}"
+					type="number" />
+			</p>
+			
+		</div>
+		<!-- End Weather | Info | Info Block -->
+	</div>
+	
+    <div class="row">
+        <div class="col-md">
+            <div class="row p-0 m-0">
+                <div class="col-sm-4  p-0">
+                <!-- HERE -->
                 </div>
             </div>
         </div>
