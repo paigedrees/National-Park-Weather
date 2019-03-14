@@ -46,6 +46,11 @@
             transform: scale(1.1, 1.1);
             color: #E34D67;
             } 
+             .slide {
+    opacity: 0;
+  display: none;
+  z-index: 1;
+}
         </style>
     </head>
     <body>
@@ -71,7 +76,23 @@
                                     </p>
                                     <img class="img-fluid mx-auto d-block" src="img/weather/snow.png">
                                 </div>
-                        
+                                <div class="slide" data-order="2">
+                                        <p class="header">Wednesday, August 30</p>
+                                        <p class="forecast">
+                                            Forecast: Sunny
+                                        </p>
+                                        <p class="climate">
+                                            Climate Desert
+                                        </p>
+                                        <p class="temperature-high">
+                                            100 <sup>o</sup>C
+                                        </p>
+                                        <p class="temperature-low">
+                                            10 <sup>o</sup>C
+                                        </p>
+                                        <img class="img-fluid mx-auto d-block" src="img/weather/sunny.png">
+                                    </div>
+                            
                         </div>
                         <div class="col-sm-2">
                             <div class="slide-navigation__txt">
@@ -88,5 +109,10 @@
                 </div>
             </div>
         </div>
+        <script src='js/jquery-3.1.0-min.js'></script>
+        <script src='js/TweenMax-1.19.0-min.js'></script>
+        
+        <script src="js/index.js"></script>
+        
     </body>
 </html>
