@@ -1,23 +1,24 @@
 
 package com.techelevator.npgeek.model;
-import java.time.LocalDateTime;
-import java.time.format.TextStyle;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
-
 
 public class Weather {
 
 	private String code;
-	private int day;
+	private LocalDate date;
 	private int lowTempF;
 	private int highTempF;
 	private String forecast;
 	
-	public String getDayName() {
-		return LocalDateTime.now().plusDays(day - 1).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ROOT);
+	public Date getDate() {
+		return java.sql.Date.valueOf(this.date);
+	}
+	public void setDay(int day) {
+		this.date = LocalDate.now().plusDays(day - 1);
 	}
 	
 	public String getRecommendation() {
@@ -76,7 +77,7 @@ public class Weather {
 	}
 	
 	public String getForecastText() {
-		
+		//TODO move this to JSP
 		String[] words = forecast.split("\\s");
 		String result = words[0].toLowerCase();
 		for (int n = 1; n < words.length; n++) {
@@ -117,9 +118,6 @@ public class Weather {
 		this.code = code;
 	}
 	
-	public void setDay(int day) {
-		this.day = day;
-	}
 	public void setLowTempF(int low) {
 		this.lowTempF = low;
 	}
@@ -132,7 +130,4 @@ public class Weather {
 	public void setForecast(String forecast) {
 		this.forecast = forecast;
 	}
-	
-	
-	
 }

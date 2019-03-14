@@ -7,8 +7,18 @@ margin-bottom: 0.3rem;
 font-size: 1.5em; color: var(--gray-dark);
 margin-bottom: 0;
 }
-.climate {
-font-size: 0.8em; color: var(--gray);
+
+.temperature-change { /* for button */
+	background:none!important;
+	border:none; 
+	padding:0!important;
+
+	font-family:inherit;
+	font-size:inherit;
+
+	font-size: 0.8em; 
+	color: var(--gray);
+	cursor:pointer;
 }
 .slides-container {
 border-radius: 10px;

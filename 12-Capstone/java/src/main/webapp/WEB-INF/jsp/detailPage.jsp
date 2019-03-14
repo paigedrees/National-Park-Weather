@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+
 
 <c:url var="imgPark" value="/img/parks/${park.code.toLowerCase()}.jpg" />
 <c:url var="temperatureSubmitURL" value="/temperature/flipScale" />
@@ -110,50 +111,84 @@
                 <div class="col-sm-4  p-0">
                     <div class="row">
                         <div class="col-sm-10 p-0 align-top text-center slides-container">
-                            <div class="slide" data-order="1">
-                                <p class="header">Thursday, August 30</p>
+
+<c:forEach var="weather" items="${weatherForecast}" varStatus="countObject">
+                            <div class="slide" data-order="${countObject.index + 1}">
+                                <p class="header"><fmt:formatDate pattern = "EEEE, MMM dd" value = "${weather.date}" /></p>
+                                
                                 <p class="forecast">
-                                    Forecast: snow
+                                    ${weather.forecast}
                                 </p>
-                                <p class="climate">
-                                    Climate Rainforest
-                                </p>
-                                <p class="temperature-high">
-                                    31 <sup>o</sup>C
-                                </p>
-                                <p class="temperature-low">
-                                    10 <sup>o</sup>C
-                                </p>
-                                <img class="img-fluid mx-auto d-block" src="img/weather/snow.png">
-                            </div>
-                            <div class="slide" data-order="2">
-                                <p class="header">Wednesday, August 30</p>
-                                <p class="forecast">
-                                    Forecast: Sunny
-                                </p>
-                                <p class="climate">
-                                    Climate Desert
-                                </p>
-                                <p class="temperature-high">
-                                    100 <sup>o</sup>C
-                                </p>
-                                <p class="temperature-low">
-                                    10 <sup>o</sup>C
-                                </p>
-                                <img class="img-fluid mx-auto d-block" src="img/weather/sunny.png">
+                                <p >
+								<!-- === Temperature Scale === -->
+								<!-- tempScale defaults to 'F' -->
+								<c:if test = "${empty sessionScope.tempScale}">
+									<c:set var="tempScale" value="F" scope="session"  />
+								</c:if>
+						
+								<form action="${temperatureSubmitURL}" method="POST">
+								<input type="hidden" name="tempScale" value="${sessionScope.tempScale}">
+								<input type="hidden" name="pageURL" value="${pageURL}">
+								
+								<c:if test = "${sessionScope.tempScale == 'F'}">
+									<button class="temperature-change">Switch to Centigrade</button><br/>
+								</c:if>
+								<c:if test = "${sessionScope.tempScale == 'C'}">
+									<button class="temperature-change">Switch to Fahrenheit</button><br/>
+								</c:if>
+								</form>
+								<!-- === end Temperature Scale === -->
+
+								<c:choose>
+								<c:when test = "${weather.getHighTempAs('F') >= 80}">
+								<c:set var="highColor" value="var(--orange)" />
+								</c:when>
+								
+								<c:when test = "${weather.getHighTempAs('F') <= 50}">
+								<c:set var="highColor" value="var(--cyan)" />
+								</c:when>
+								
+								<c:otherwise>
+								<c:set var="highColor" value="inherit" />
+								</c:otherwise>
+								</c:choose>
+                                <fmt:formatNumber var="tempHigh" 
+                                value="${weather.getHighTempAs(sessionScope.tempScale)}"
+  								maxFractionDigits="0" />
+                                <p class="temperature-high" style="color: ${highColor}">${tempHigh} <sup>o</sup>${sessionScope.tempScale}</p>
+
+
+								<c:choose>
+								<c:when test = "${weather.getLowTempAs('F') >= 80}">
+								<c:set var="lowColor" value="var(--orange)" />
+								</c:when>
+								
+								<c:when test = "${weather.getLowTempAs('F') <= 50}">
+								<c:set var="lowColor" value="var(--cyan)" />
+								</c:when>
+								
+								<c:otherwise>
+								<c:set var="lowColor" value="inherit" />
+								</c:otherwise>
+								</c:choose>
+                                <fmt:formatNumber var="tempLow" 
+                                value="${weather.getLowTempAs(sessionScope.tempScale)}"
+  								maxFractionDigits="0" />
+                                <p class="temperature-low" style="color: ${lowColor}">${tempLow} <sup>o</sup>${sessionScope.tempScale}</p>
+                                
+                                <c:url var="imgWeather" value="/img/weather_t/${weather.forecastText}.png" />
+                                <img class="img-fluid mx-auto d-block" src="${imgWeather}">
                                 <p>${weather.getRecommendation()}</p>
-                                <p></p>
-                                <p></p>
                             </div>
+</c:forEach>
                         </div>
                         <div class="col-sm-2">
                             <div class="slide-navigation__txt">
                                 <ul>
-                                    <li><span data-order="1">Mon</span></li>
-                                    <li><span data-order="2">Tue</span></li>
-                                    <li><span data-order="3">Wed</span></li>
-                                    <li><span data-order="4">Thu</span></li>
-                                    <li><span data-order="5">Fri</span></li>
+<c:forEach var="weather" items="${weatherForecast}" varStatus="countObject">
+                                    <li><span data-order="${countObject.index + 1}">
+                                    <fmt:formatDate pattern = "E" value = "${weather.date}" /></span></li>
+</c:forEach>
                                 </ul>
                             </div>
                         </div>
@@ -162,42 +197,6 @@
             </div>
         </div>
     </div>
-	
-
-	<div class="row form-group">
-		<!-- === Temperature Scale === -->
-		<!-- tempScale defaults to 'F' -->
-		<c:if test = "${empty sessionScope.tempScale}">
-			<c:set var="tempScale" value="F" scope="session"  />
-		</c:if>
-
-		<form action="${temperatureSubmitURL}" method="POST">
-		<input type="hidden" name="tempScale" value="${sessionScope.tempScale}">
-		<input type="hidden" name="pageURL" value="${pageURL}">
-		
-		<c:if test = "${sessionScope.tempScale == 'F'}">
-			<button class="tempScale">degree C</button><br/>
-		</c:if>
-		<c:if test = "${sessionScope.tempScale == 'C'}">
-			<button class="tempScale">degree F</button><br/>
-		</c:if>
-		</form>
-		<!-- === end Temperature Scale === -->
-		
-		<c:forEach var="weather" items="${weatherForecast}">
-			<c:url var="imgWeather"
-				value="/img/weather/${weather.forecastText}.png" />
-			<div class="col-md">
-				<p>${weather.dayName}</p>
-				<img class="img-fluid" src="${imgWeather}" />
-				<p>Low: ${weather.getLowTempAs(sessionScope.tempScale)}</p>
-				<p>High: ${weather.getHighTempAs(sessionScope.tempScale)}</p>
-				<p id="forecast">${weather.forecast}</p>
-				<p id="recommendation">${weather.getRecommendation()}</p>
-			</div>
-
-		</c:forEach>
-	</div>
 </div>
 
 <c:url var="queryURL" value="/js/jquery-3.1.0-min.js" />
