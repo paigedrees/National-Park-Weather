@@ -25,7 +25,6 @@ import com.techelevator.npgeek.model.SurveyResult;
 @Controller
 public class ParkController {
 
-	
 	@Autowired
 	ParkDAO parkDao;
 	
@@ -48,6 +47,7 @@ public class ParkController {
 	        HttpSession session,
 	        ModelMap pageData
 	        ){
+		//TODO rewrite this
 	    List<SurveyResult> parksInSurvey = new ArrayList<SurveyResult>();
 	    List<String> keys = new ArrayList<>(surveyDao.getMostPopularParkCodes().keySet());
 	    
@@ -60,8 +60,6 @@ public class ParkController {
 	    
 	    session.setAttribute("isSurveyPosted", true);
 	    pageData.put("surveys", parksInSurvey);
-	
-	    System.out.println("getPageResult(): " + pageData.get("pageURL"));
 	
 	    // three pieces of data for survey form
 	    pageData.put("parks", parkDao.getAllParks());
@@ -77,7 +75,7 @@ public class ParkController {
 	        ModelMap pageData
 	        ) {
 	    pageData.put("park", parkDao.getParkByCode(parkCode));
-	    pageData.put("weatherForecast", parkDao.getForecastByCode(parkCode));
+	    pageData.put("weatherForecast", parkDao.getForecastByParkcode(parkCode));
 	    
 	    // three pieces of data for survey form
 	    pageData.put("parks", parkDao.getAllParks());

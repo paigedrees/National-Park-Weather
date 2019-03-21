@@ -4,22 +4,14 @@
 #quote {
 	font-family: 'IM Fell DW Pica', serif;
 	font-size: 1.5em;
-	text-shadow:
-		-1px -1px 0 #000,
-		 1px -1px 0 #000,
-		-1px 1px 0 #000,
-		 1px 1px 0 #000;
-
 }
 .author {
 	display: block;
 	font-family: 'Merriweather', serif;
-	color: rgba(210,220,230, 0.8);
+	color: var(--pal-light-green);
 	text-shadow: none;
 }
 .forecast {
-/* font-variant: small-caps;
- */
 text-transform: uppercase;
 }
 .temperature-high {
@@ -44,14 +36,15 @@ margin-bottom: 0;
 	cursor:pointer;
 }
 .slides-container {
-border-right: 2px solid darkgrey;
+border-right: 2px solid rgba(255, 255, 255, 0.3);
 font-family: 'Rubik', sans-serif;
 }
 .banner {
-background: rgba(255, 255, 255, 0.1);
+background: rgba(255, 255, 255, 0.2);
 padding: 1em;
 text-align: center;
 font-weight: 700;
+color: var(--pal-light-red);
 }
 .slide-navigation__txt {
 position: relative;
@@ -60,7 +53,7 @@ height: 100%;
 font-family: 'Rubik', sans-serif;
 }
 .slide-navigation__txt ul {
-margin: 3em 0 0 1em;
+margin: 4em 0 0 1em;
 list-style: none;
 padding: 0;
 width: 24rem;
@@ -80,8 +73,7 @@ margin: 0 1rem;
 position: relative;
 float: left;
 font-size: 1rem;
-font-weight: 700;
-color: var(--gray);
+color: var(--pal-light-green);
 } 
 .slide-navigation__txt li span {
 cursor: pointer;
@@ -92,7 +84,7 @@ display: block;
 .slide-navigation__txt li span.active {
 -webkit-transform: scale(1.1, 1.1);
 transform: scale(1.1, 1.1);
-color: var(--light);
+color: var(--pal-light-red);
 } 
 .slide {
 opacity: 0;

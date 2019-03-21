@@ -76,17 +76,13 @@ public class Weather {
 		return result.toString();
 	}
 	
-	public String getForecastText() {
-		//TODO move this to JSP
-		String[] words = forecast.split("\\s");
+	public String forecastFileName() {
+		String[] words = forecast.split(" ");
 		String result = words[0].toLowerCase();
 		for (int n = 1; n < words.length; n++) {
 			result += Character.toUpperCase(words[n].charAt(0)) + words[n].substring(1).toLowerCase();
 		}
-		
-		return result;
-		
-	
+		return result + ".png";
 	}
 	
 	public float getLowTempAs(char scale) {

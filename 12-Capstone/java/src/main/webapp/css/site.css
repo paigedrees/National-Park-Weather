@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Merriweather:400,600,700');
 
+:root {
+	--pal-light-red:   #FFD6B3;
+	--pal-light-green: #AAF0F2;
+}
+
 /* Background Colors and Images */
 html {
 	margin: 50px;
@@ -21,10 +26,10 @@ body {
 h1, h2, h3, h4 {
 	font-family: 'Merriweather', serif;
 	text-shadow:
-		-2px -1px 0 #000,
-		 2px -1px 0 #000,
-		-2px 1px 0 #000,
-		 2px 1px 0 #000;
+		-2px -2px 0 rgb(0, 40, 0),
+		 2px -2px 0 rgb(0, 40, 0),
+		-2px  2px 0 rgb(0, 40, 0),
+		 2px  2px 0 rgb(0, 40, 0);
 }
 
 .parkDetail {
@@ -37,12 +42,12 @@ h1, h2, h3, h4 {
 	background-color: rgba(0, 40, 0, .3);
 	color: #EEE;
 }
-.parkTextShadow {
+.parkTextShadow, #quote {
 	text-shadow:
-		-2px -1px 0 #000,
-		 2px -1px 0 #000,
-		-2px 1px 0 #000,
-		 2px 1px 0 #000;
+		-2px -2px 0 rgb(0, 40, 0),
+		 2px -2px 0 rgb(0, 40, 0),
+		-2px  2px 0 rgb(0, 40, 0),
+		 2px  2px 0 rgb(0, 40, 0);
 }
 /* Layout Formatting */
 #allParks {

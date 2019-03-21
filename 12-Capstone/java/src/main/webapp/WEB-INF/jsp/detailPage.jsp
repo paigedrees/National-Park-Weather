@@ -125,7 +125,7 @@
   								maxFractionDigits="0" />
                                 <p class="temperature-low" style="color: ${lowColor}">${tempLow} <sup>o</sup>${sessionScope.tempScale}</p>
                                 
-                                <c:url var="imgWeather" value="/img/weather_t/${weather.forecastText}.png" />
+                                <c:url var="imgWeather" value="/img/weather_t/${weather.forecastFileName()}" />
                                 <img class="img-fluid mx-auto d-block" src="${imgWeather}">
                                 <p>${weather.getRecommendation()}</p>
                             </div>

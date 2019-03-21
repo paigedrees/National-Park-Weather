@@ -23,14 +23,14 @@ public class JDBCparkDAO implements ParkDAO {
 	
 	@Override
 	public List<Park> getAllParks() {
-		List<Park> allParks = new ArrayList<Park>();
+		List<Park> result = new ArrayList<Park>();
 		String sql = "SELECT * FROM park";
-		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+		SqlRowSet row = jdbcTemplate.queryForRowSet(sql);
 		
-		while (result.next()) {
-			allParks.add(createParkObject(result));
+		while (row.next()) {
+			result.add(createParkObject(row));
 		}
-		return allParks;
+		return result;
 	}
 	
 	private Park createParkObject(SqlRowSet row) {
@@ -59,16 +59,14 @@ public class JDBCparkDAO implements ParkDAO {
 		String sql = "SELECT * FROM park WHERE parkcode = ?";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, code.toUpperCase());
 		Park thisPark = null;
-		if (result.next()) {
+		if( result.next() ) {
 			thisPark = createParkObject(result);
 		} 
-		
-		System.out.println(thisPark.getName());
 		return thisPark;
 	}
 	
 	@Override
-	public List<Weather> getForecastByCode(String code) {
+	public List<Weather> getForecastByParkcode(String code) {
 		List<Weather> allWeathers = new ArrayList<Weather>();
 		String sql = "SELECT * FROM weather WHERE parkcode = ? ORDER by fivedayforecastvalue";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, code);

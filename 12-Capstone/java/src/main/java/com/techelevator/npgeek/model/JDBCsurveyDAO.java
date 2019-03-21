@@ -1,9 +1,6 @@
 package com.techelevator.npgeek.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -25,27 +22,10 @@ public class JDBCsurveyDAO implements SurveyDAO{
 	
 	@Override
 	public void save(Survey survey) {
-		
 		String sqlInsertSurvey = "INSERT INTO survey_result(parkcode, emailaddress, state, activitylevel) VALUES (?,?,?,?)";
 		jdbcTemplate.update(sqlInsertSurvey, survey.getFavoriteParkCode(), survey.getEmail(), survey.getStateOfResidence(), survey.getPhysicalActivityLevel());
-		
-		
 	}
-	
-	/*
-	private Long getNextId() {
-		String sqlSelectNextId = "SELECT NEXTVAL('seq_surveyid') FROM survey_result";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectNextId);
-		Long id = null;
-		if(results.next()) {
-			id = results.getLong(1);
-		} else {
-			throw new RuntimeException("Something strange happened, unable to select next survey id from sequence");
-		}
-		return id;
-	}
-	*/
-	
+
 	@Override
 	public Map<String, Integer> getMostPopularParkCodes() {
 		Map<String, Integer> parkCodes = new LinkedHashMap<String, Integer>();
